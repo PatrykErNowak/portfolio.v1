@@ -31,7 +31,7 @@
     position: absolute;
     z-index: 500;
     right: 0;
-    top: 3em;
+    top: 5em;
     display: flex;
     flex-direction: column;
     gap: 1.5em;
@@ -40,11 +40,16 @@
     background-color: var(--nav-background-color);
     border-radius: var(--border-radious);
     opacity: 0;
+    transform: translateY(25%);
+    transition:
+      opacity 0.5s ease,
+      transform 1.2s ease;
     pointer-events: none;
 
     &.active {
       opacity: 1;
       pointer-events: all;
+      transform: translateY(0);
     }
 
     @media screen and (min-width: b.$medium) {
@@ -65,6 +70,7 @@
     letter-spacing: -0.02em;
     line-height: 1.2;
     text-align: left;
+
     &::before {
       content: '';
       position: absolute;
@@ -82,22 +88,17 @@
     }
 
     span {
-      display: none;
-      @media screen and (min-width: b.$medium) {
-        display: inline;
-        margin-bottom: 0.1em;
-        color: var(--primary-color);
-        font-family: var(--nav-font-family-span);
-        font-size: 0.8em;
-        opacity: 0;
-        transition: opacity v.$transition-duration v.$transition-function;
-      }
+      margin-bottom: 0.1em;
+      color: #ffffff8c;
+      font-size: 0.8em;
+      font-family: var(--nav-font-family-span);
+      transition: color v.$transition-duration v.$transition-function;
     }
 
     &:hover,
     &:focus-within {
       span {
-        opacity: 1;
+        color: var(--primary-color);
       }
 
       &::before {
@@ -138,6 +139,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      pointer-events: none;
       &::before {
         width: 75%;
         opacity: 75%;

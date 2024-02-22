@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"HBA8c":[function(require,module,exports) {
+})({"iqNlW":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "7055c94b59712999";
+module.bundle.HMR_BUNDLE_ID = "0bcb44a518dbc454";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -578,8 +578,58 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"4M6V8":[function(require,module,exports) {
+},{}],"1SICI":[function(require,module,exports) {
+var _navJs = require("./sections/nav.js");
+const init = function() {
+    _navJs.mobileBtnHandler();
+};
+init();
 
-},{}]},["HBA8c","4M6V8"], "4M6V8", "parcelRequirec63f")
+},{"./sections/nav.js":"kwGx8"}],"kwGx8":[function(require,module,exports) {
+// --------- NAVIGATION
+// Elements
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "mobileBtnHandler", ()=>mobileBtnHandler);
+const mobileBtn = document.querySelector('[data-js="nav-mobile-btn"]');
+const navlist = document.querySelector('[data-js="nav-list"]');
+const mobileBtnHandler = function() {
+    mobileBtn.addEventListener("click", (e)=>{
+        mobileBtn.classList.toggle("is-active");
+        navlist.classList.toggle("active");
+    });
+};
 
-//# sourceMappingURL=Portfolio v1.59712999.js.map
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}]},["iqNlW","1SICI"], "1SICI", "parcelRequirec63f")
+
+//# sourceMappingURL=main.min.18dbc454.js.map
