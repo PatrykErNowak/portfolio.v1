@@ -1,0 +1,47 @@
+{
+  "name": "parcel-basic",
+  "version": "1.0.0",
+  "description": "",
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions"
+  ],
+  "source": "src/index.html",
+  "scripts": {
+    "clean:output": "rimraf dist",
+    "start": "npm run clean:output && parcel  --open chrome",
+    "build": "npm run clean:output && parcel build --public-url ./"
+  },
+  "author": "pendev",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.11.0",
+    "parcel": "^2.11.0",
+    "parcel-namer-custom": "^0.2.0",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "sharp": "^0.31.3"
+  },
+  "parcel-namer-custom": {
+    ".scss$": "css/[name].min.[hash].[type]",
+    ".js$": "js/[name].min.[hash].[type]",
+    ".png$|.jpg$|.svg$|.jpg2$|.gif$|.bmp$|.webm$|.webp$": "img/[name].[hash].[type]"
+  },
+  "htmlnano": {
+    "collapseAttributeWhitespace": false,
+    "collapseBooleanAttributes": false,
+    "collapseWhitespace": false,
+    "custom": [],
+    "deduplicateAttributeValues": false,
+    "mergeScripts": false,
+    "mergeStyles": false,
+    "removeUnusedCss": false,
+    "minifyJson": false,
+    "minifySvg": false,
+    "removeEmptyAttributes": false,
+    "removeRedundantAttributes": false,
+    "removeComments": false
+  },
+  "dependencies": {
+  }
+}
