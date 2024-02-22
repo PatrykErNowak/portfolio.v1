@@ -43,5 +43,6 @@
     "removeComments": false
   },
   "dependencies": {
+    "hamburgers": "^1.2.1"
   }
 }
