@@ -1,0 +1,25 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/breakpoints' as b;
+@use '../abstracts/variables' as v;
+
+$btn-radious: 3px;
+$btn-primary-bgc: c.$primary-color;
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.7em 1.2em;
+
+  .icon {
+    width: 1.5em;
+    aspect-ratio: 1/1;
+    fill: currentColor;
+  }
+
+  &--primary {
+    background-color: $btn-primary-bgc;
+    border-radius: $btn-radious;
+  }
+}

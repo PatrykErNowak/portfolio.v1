@@ -2,16 +2,15 @@
 @use '../abstracts/breakpoints' as b;
 @use '../abstracts/variables' as v;
 
-:root {
-  --nav-font-color: #fff;
-  --nav-background-color: rgba(15, 15, 15, 0.9);
-  --nav-font-family: 'Figtree', sans-serif;
-  --nav-font-family-span: 'Kode Mono', monospace;
-  --nav-font-size: 14px;
-  --nav-font-weight: 600;
+$nav-border-radious: v.$border-radious;
+$nav-background-color: rgba(15, 15, 15, 0.9);
+$nav-hamburger-bg: rgba(0, 0, 0, 0.2);
 
-  --border-radious: 10px;
-}
+$nav-font-family: 'Figtree', sans-serif;
+$nav-font-family-span: 'Kode Mono', monospace;
+$nav-font-color: #fff;
+$nav-font-weight: 600;
+$nav-font-size: 14px;
 
 .nav {
   position: relative;
@@ -19,10 +18,10 @@
   justify-content: space-between;
   align-items: center;
   margin: 1.5rem;
-  color: var(--nav-font-color);
-  font-family: var(--nav-font-family);
-  font-size: var(--nav-font-size);
-  font-weight: var(--nav-font-weight);
+  color: $nav-font-color;
+  font-family: $nav-font-family;
+  font-size: $nav-font-size;
+  font-weight: $nav-font-weight;
   @media screen and (min-width: b.$medium) {
     margin: 1rem 2rem;
   }
@@ -37,8 +36,8 @@
     gap: 1.5em;
     padding: 1.5em 1em;
     backdrop-filter: blur(6px);
-    background-color: var(--nav-background-color);
-    border-radius: var(--border-radious);
+    background-color: $nav-background-color;
+    border-radius: $nav-border-radious;
     opacity: 0;
     transform: translateY(25%);
     transition:
@@ -55,11 +54,13 @@
     @media screen and (min-width: b.$medium) {
       position: static;
       flex-direction: row;
-      align-items: end;
+      align-items: center;
+      gap: 2em;
       padding: 1em 0;
       background-color: unset;
       opacity: 1;
       pointer-events: all;
+      transform: translateY(0);
     }
   }
 
@@ -78,32 +79,41 @@
       left: 0;
       width: 100%;
       height: 1px;
-      background-color: var(--primary-color);
+      background-color: c.$primary-color;
       box-shadow:
-        0 0 3px var(--primary-color),
-        0 0 6px var(--primary-color),
-        0 0 9px var(--primary-color);
+        0 0 3px c.$primary-color,
+        0 0 6px c.$primary-color,
+        0 0 9px c.$primary-color;
       transition: opacity v.$transition-duration v.$transition-function;
       opacity: 0;
+      pointer-events: none;
     }
 
     span {
       margin-bottom: 0.1em;
       color: #ffffff8c;
       font-size: 0.8em;
-      font-family: var(--nav-font-family-span);
+      font-family: $nav-font-family-span;
       transition: color v.$transition-duration v.$transition-function;
     }
 
     &:hover,
     &:focus-within {
       span {
-        color: var(--primary-color);
+        color: c.$primary-color;
       }
 
       &::before {
         opacity: 0.6;
       }
+    }
+  }
+
+  li:has(&__btn-resume) {
+    display: none;
+
+    @media screen and (min-width: b.$medium) {
+      display: inline-block;
     }
   }
 
@@ -121,8 +131,8 @@
   &__btn-hamburger-box {
     width: 4.5rem;
     height: 4.5rem;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: var(--border-radious);
+    background-color: $nav-hamburger-bg;
+    border-radius: $nav-border-radious;
     backdrop-filter: blur(6px);
     @media screen and (min-width: b.$medium) {
       display: none;
@@ -140,6 +150,7 @@
       justify-content: center;
       align-items: center;
       pointer-events: none;
+      transition-duration: 1s;
       &::before {
         width: 75%;
         opacity: 75%;
@@ -152,6 +163,7 @@
 
     &.is-active {
       span {
+        &::before,
         &::after {
           width: 100%;
           opacity: 100%;
