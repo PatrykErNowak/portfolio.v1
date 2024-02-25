@@ -13,17 +13,19 @@ $nav-font-weight: 600;
 $nav-font-size: 14px;
 
 .nav {
-  position: relative;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1.5rem;
+  padding: 1.5rem;
   color: $nav-font-color;
   font-family: $nav-font-family;
   font-size: $nav-font-size;
   font-weight: $nav-font-weight;
   @media screen and (min-width: b.$medium) {
-    margin: 1rem 2rem;
+    padding: 1rem 2rem;
   }
 
   &__list {

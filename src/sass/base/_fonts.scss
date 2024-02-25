@@ -1,4 +1,4 @@
-// Figtree 600
+//Figtree 600
 // Used: nav-link
 @font-face {
   font-family: 'Figtree';
@@ -6,7 +6,15 @@
   font-style: normal;
   font-weight: 600;
 }
+// Used: buttons
+@font-face {
+  font-family: 'Figtree';
+  src: url('../assets/fonts/Figtree/static/Figtree-Bold.ttf');
+  font-style: normal;
+  font-weight: 700;
+}
 
+// -----------------------------------------------------
 //Kode-mono
 // Used: nav-link:span
 @font-face {
@@ -16,6 +24,7 @@
   font-weight: 400;
 }
 
+// ---------------------------------------------------------
 //Homemane Apple
 // Used: logo pendev
 @font-face {

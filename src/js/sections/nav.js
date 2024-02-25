@@ -6,7 +6,11 @@ const navlist = document.querySelector('[data-js="nav-list"]');
 export const mobileBtnHandler = function () {
   mobileBtn.addEventListener('click', (e) => {
     mobileBtn.classList.toggle('is-active');
-
     navlist.classList.toggle('active');
+
+    // A11Y
+    const isExpanded =
+      mobileBtn.getAttribute('aria-expanded') === 'false' ? 'true' : 'false';
+    mobileBtn.setAttribute('aria-expanded', isExpanded);
   });
 };
