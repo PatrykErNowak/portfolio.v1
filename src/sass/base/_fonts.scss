@@ -1,4 +1,11 @@
 //Figtree 600
+// Used:
+@font-face {
+  font-family: 'Figtree';
+  src: url('../assets/fonts/Figtree/static/Figtree-SemiBold.ttf');
+  font-style: normal;
+  font-weight: 500;
+}
 // Used: nav-link
 @font-face {
   font-family: 'Figtree';
@@ -16,7 +23,7 @@
 
 // -----------------------------------------------------
 //Kode-mono
-// Used: nav-link:span
+// Used: nav-link>span
 @font-face {
   font-family: 'Kode Mono';
   src: url('../assets/fonts/Kode_Mono/static/KodeMono-Regular.ttf');
@@ -30,4 +37,14 @@
 @font-face {
   font-family: 'Homemade Apple';
   src: url('../assets/fonts/Homemade_Apple/HomemadeApple-Regular.ttf');
+}
+
+// --------------------------------------------------------------
+// Roboto
+// Used: header>heading
+@font-face {
+  font-family: 'Roboto';
+  src: url('../assets/fonts/Roboto/Roboto-Medium.ttf');
+  font-style: normal;
+  font-weight: 500;
 }

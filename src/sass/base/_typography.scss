@@ -1,7 +1,15 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/breakpoints' as b;
+
 html {
   font-size: 62.5%;
 }
 
 :root {
   --font-size: 1.4rem;
+}
+
+body {
+  color: c.$font-color;
+  font-family: 'Figtree', sans-serif;
 }

@@ -1,4 +1,100 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/breakpoints' as b;
+
+$heading-font: 'Roboto', sans-serif;
+$heading-font-weight: 500;
+$header-bgc: rgba(5, 5, 5, 1);
+
 .header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
   height: 100vh;
-  background-color: rgba(15, 15, 15, 1);
+  padding: 1em;
+  @media screen and (min-width: b.$medium) {
+    justify-content: center;
+  }
+  // BG noise effect div
+  .noise {
+    z-index: -1;
+    background-color: $header-bgc;
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    font-family: $heading-font;
+    font-size: clamp(8rem, 6rem + 7vw, 20rem);
+    text-transform: uppercase;
+    font-weight: $heading-font-weight;
+    span {
+      line-height: 0.9;
+      word-spacing: -10px;
+    }
+
+    // Only for mobile
+    .name {
+      font-size: clamp(5rem, 4rem + 8vw, 20rem);
+      color: transparent;
+      text-shadow:
+        0 0 1px rgba(20, 20, 20, 1),
+        0 0 2px c.$font-color,
+        0 0 3px c.$primary-color;
+
+      span {
+        color: c.$primary-color;
+      }
+    }
+
+    .text-stroke {
+      display: none;
+      font-size: clamp(5rem, 2rem + 8vw, 10rem);
+      letter-spacing: 10px;
+      fill: transparent;
+      stroke: c.$primary-color;
+      stroke-width: 1;
+      stroke-dasharray: 100%;
+      stroke-dashoffset: 100%;
+      animation: textStrokeAnim 4000ms linear both;
+      animation-iteration-count: 1;
+    }
+
+    @media screen and (min-width: b.$medium) {
+      display: block;
+      text-align: center;
+
+      span {
+        word-spacing: normal;
+      }
+      .name {
+        display: none;
+      }
+
+      .text-stroke {
+        display: block;
+        margin: 0.5em auto 0;
+      }
+    }
+  }
+}
+
+@keyframes textStrokeAnim {
+  0% {
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 100%;
+    fill: #0000;
+  }
+  95% {
+    stroke-dasharray: 0%;
+    stroke-dashoffset: 90%;
+    fill: #0000;
+  }
+  100% {
+    stroke-dasharray: 0%;
+    stroke-dashoffset: 0%;
+    fill: transparent;
+    filter: drop-shadow(2px 2px 10px #0007);
+  }
 }

@@ -17,6 +17,13 @@ a {
   font-family: Figtree;
   src: url("../Figtree-SemiBold.cc985e22.ttf");
   font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Figtree;
+  src: url("../Figtree-SemiBold.cc985e22.ttf");
+  font-style: normal;
   font-weight: 600;
 }
 
@@ -39,12 +46,29 @@ a {
   src: url("../HomemadeApple-Regular.6407841b.ttf");
 }
 
+@font-face {
+  font-family: Roboto;
+  src: url("../Roboto-Medium.a436a3d6.ttf");
+  font-style: normal;
+  font-weight: 500;
+}
+
+:root {
+  --primary-color: #7950f2;
+  --font-color: #fff;
+}
+
 html {
   font-size: 62.5%;
 }
 
 :root {
   --font-size: 1.4rem;
+}
+
+body {
+  color: var(--font-color);
+  font-family: Figtree, sans-serif;
 }
 
 .hamburger {
@@ -140,10 +164,6 @@ html {
   transform: translate3d(0, 6px, 0)rotate(-45deg);
 }
 
-:root {
-  --primary-color: #7950f2;
-}
-
 .btn {
   z-index: 1;
   color: #eee;
@@ -212,11 +232,9 @@ html {
 }
 
 .noise {
-  z-index: 1;
-  opacity: .1;
   width: 100%;
   height: 100%;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
@@ -224,6 +242,7 @@ html {
 
 .noise:after {
   content: "";
+  opacity: .15;
   background-image: url("../img/noise.1ca5d1c8.svg");
   width: 200vw;
   height: 200vh;
@@ -259,9 +278,27 @@ html {
   }
 }
 
+.logo {
+  text-transform: capitalize;
+  font-family: Homemade Apple, cursive;
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+.logo span {
+  color: var(--primary-color);
+  font-size: 2em;
+}
+
+.logo .icon {
+  aspect-ratio: 1;
+  fill: var(--primary-color);
+  width: 1.5em;
+}
+
 .nav {
   z-index: 999;
-  color: #fff;
+  color: var(--font-color);
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -368,20 +405,31 @@ li:has(.nav__btn-resume) {
 }
 
 .nav__logo {
-  font-family: Homemade Apple, cursive;
-  font-size: 1.5em;
-  line-height: 1;
+  position: relative;
 }
 
-.nav__logo span {
-  color: var(--primary-color);
-  font-size: 2em;
+.nav__logo:before {
+  content: "";
+  background-color: var(--primary-color);
+  transform-origin: 0;
+  width: 100%;
+  height: 2px;
+  transition: transform .3s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+}
+
+.nav__logo:hover:before, .nav__logo:focus:before {
+  transform: scaleX(1);
 }
 
 .nav__btn-hamburger-box {
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
-  background-color: #0003;
+  background-color: #ffffff08;
+  border: 1px solid #ffffff0d;
   border-radius: 10px;
   width: 4.5rem;
   height: 4.5rem;
@@ -426,8 +474,101 @@ li:has(.nav__btn-resume) {
 }
 
 .header {
-  background-color: #0f0f0f;
+  justify-content: start;
+  align-items: center;
   height: 100vh;
+  padding: 1em;
+  display: flex;
+}
+
+@media screen and (width >= 48em) {
+  .header {
+    justify-content: center;
+  }
+}
+
+.header .noise {
+  z-index: -1;
+  background-color: #050505;
+}
+
+.header__heading {
+  text-transform: uppercase;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  font-family: Roboto, sans-serif;
+  font-size: clamp(8rem, 6rem + 7vw, 20rem);
+  font-weight: 500;
+  display: flex;
+}
+
+.header__heading span {
+  word-spacing: -10px;
+  line-height: .9;
+}
+
+.header__heading .name {
+  color: #0000;
+  text-shadow: 0 0 1px #141414, 0 0 2px var(--font-color), 0 0 3px var(--primary-color);
+  font-size: clamp(5rem, 4rem + 8vw, 20rem);
+}
+
+.header__heading .name span {
+  color: var(--primary-color);
+}
+
+.header__heading .text-stroke {
+  letter-spacing: 10px;
+  fill: #0000;
+  stroke: var(--primary-color);
+  stroke-width: 1px;
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  font-size: clamp(5rem, 2rem + 8vw, 10rem);
+  animation: 4s linear both textStrokeAnim;
+  display: none;
+}
+
+@media screen and (width >= 48em) {
+  .header__heading {
+    text-align: center;
+    display: block;
+  }
+
+  .header__heading span {
+    word-spacing: normal;
+  }
+
+  .header__heading .name {
+    display: none;
+  }
+
+  .header__heading .text-stroke {
+    margin: .5em auto 0;
+    display: block;
+  }
+}
+
+@keyframes textStrokeAnim {
+  0% {
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 100%;
+    fill: #0000;
+  }
+
+  95% {
+    stroke-dasharray: 0%;
+    stroke-dashoffset: 90%;
+    fill: #0000;
+  }
+
+  100% {
+    stroke-dasharray: 0%;
+    stroke-dashoffset: 0%;
+    fill: #0000;
+    filter: drop-shadow(2px 2px 10px #0007);
+  }
 }
 
 /*# sourceMappingURL=main.min.f7626f62.css.map */

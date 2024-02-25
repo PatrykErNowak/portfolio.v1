@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PENDEV - Frontend Developer</title>
+    <link rel="icon" sizes="32x32" type="image/x-icon" href="/img/favicon.5c0db043.svg">
     <!-- CSS -->
     <link rel="stylesheet" href="/css/main.min.f7626f62.css">
     <!-- JS -->
@@ -12,7 +13,11 @@
 
   <body>
     <nav class="nav">
-      <a href="#" class="nav__logo" aria-label="Back Home">Pendev<span>.</span></a>
+      <a href="#" class="nav__logo logo" aria-label="Back Home">Pendev<span>.</span>
+        <svg class="icon">
+          <use xlink:href="/img/sprite.af061885.svg#icon-pencil2"></use>
+        </svg>
+      </a>
       <ul class="nav__list" id="navigation" data-js="nav-list">
         <li>
           <a href="#" class="nav__link"><span>01</span>Projects</a>
@@ -40,7 +45,15 @@
       </div>
     </nav>
 
-    <header class="header"></header>
-    <div class="noise"></div>
+    <header class="header">
+      <div class="noise"></div>
+      <h1 class="header__heading">
+        <span>hey, </span><span>i am</span>
+        <span class="name">pendev<span>.</span></span>
+        <svg class="text-stroke" viewbox="0 0 450 100" width="100%" height="100%">
+          <text class="text" x="10" y="75">PENDEV</text>
+        </svg>
+      </h1>
+    </header>
   </body>
 </html>

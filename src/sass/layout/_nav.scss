@@ -8,7 +8,7 @@ $nav-hamburger-bg: rgba(0, 0, 0, 0.2);
 
 $nav-font-family: 'Figtree', sans-serif;
 $nav-font-family-span: 'Kode Mono', monospace;
-$nav-font-color: #fff;
+$nav-font-color: c.$font-color;
 $nav-font-weight: 600;
 $nav-font-size: 14px;
 
@@ -119,22 +119,35 @@ $nav-font-size: 14px;
     }
   }
 
-  // FIXME Temporary
   &__logo {
-    line-height: 1;
-    font-size: 1.5em;
-    font-family: 'Homemade Apple', cursive;
-    span {
-      color: var(--primary-color);
-      font-size: 2em;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background-color: c.$primary-color;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform v.$transition-duration v.$transition-function;
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        transform: scaleX(1);
+      }
     }
   }
 
   &__btn-hamburger-box {
     width: 4.5rem;
     height: 4.5rem;
-    background-color: $nav-hamburger-bg;
+    background-color: rgba(255, 255, 255, 0.03);
     border-radius: $nav-border-radious;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(6px);
     @media screen and (min-width: b.$medium) {
       display: none;
