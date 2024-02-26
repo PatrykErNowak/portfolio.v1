@@ -13,25 +13,9 @@ a {
   text-decoration: none;
 }
 
-@font-face {
-  font-family: Figtree;
-  src: url("../Figtree-SemiBold.cc985e22.ttf");
-  font-style: normal;
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: Figtree;
-  src: url("../Figtree-SemiBold.cc985e22.ttf");
-  font-style: normal;
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: Figtree;
-  src: url("../Figtree-Bold.ac7a7a30.ttf");
-  font-style: normal;
-  font-weight: 700;
+img {
+  width: 100%;
+  display: block;
 }
 
 @font-face {
@@ -44,6 +28,18 @@ a {
 @font-face {
   font-family: Homemade Apple;
   src: url("../HomemadeApple-Regular.6407841b.ttf");
+}
+
+@font-face {
+  font-family: Kdam Thmor Pro;
+  src: url("../KdamThmorPro-Regular.184f38d4.ttf");
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../Roboto-Medium.a436a3d6.ttf");
+  font-style: normal;
+  font-weight: 400;
 }
 
 @font-face {
@@ -68,7 +64,7 @@ html {
 
 body {
   color: var(--font-color);
-  font-family: Figtree, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 .hamburger {
@@ -172,7 +168,8 @@ body {
   align-items: center;
   gap: .75em;
   padding: .7em 1.2em;
-  font-weight: 700;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
   transition: all .5s;
   display: flex;
   position: relative;
@@ -242,7 +239,7 @@ body {
 
 .noise:after {
   content: "";
-  opacity: .15;
+  opacity: .2;
   background-image: url("../img/noise.1ca5d1c8.svg");
   width: 200vw;
   height: 200vh;
@@ -303,9 +300,9 @@ body {
   align-items: center;
   width: 100%;
   padding: 1.5rem;
-  font-family: Figtree, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   display: flex;
   position: fixed;
 }
@@ -492,13 +489,26 @@ li:has(.nav__btn-resume) {
   background-color: #050505;
 }
 
+.header .myphoto {
+  z-index: -1;
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header__heading-box {
+  position: relative;
+}
+
 .header__heading {
   text-transform: uppercase;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   font-family: Roboto, sans-serif;
-  font-size: clamp(8rem, 6rem + 7vw, 20rem);
+  font-size: clamp(8rem, 6rem + 10vw, 30rem);
   font-weight: 500;
   display: flex;
 }
@@ -550,6 +560,68 @@ li:has(.nav__btn-resume) {
   }
 }
 
+.header__subheading-box {
+  display: none;
+}
+
+@media screen and (width >= 48em) {
+  .header__subheading-box {
+    color: #fff3;
+    text-transform: uppercase;
+    justify-content: space-between;
+    padding: 0 1rem;
+    font-family: Kdam Thmor Pro, sans-serif;
+    font-size: 2rem;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.header__anime-line {
+  flex-grow: 1;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.header__anime-line:before {
+  content: "";
+  opacity: .4;
+  background-color: var(--primary-color);
+  border-radius: 500px;
+  width: 50px;
+  height: 3px;
+  animation-name: traveling-line;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  transform: translate(-50%, -50%);
+}
+
+.header__myname {
+  animation-name: pulse-color;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+.header__job-role {
+  animation-name: pulse-color;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
 @keyframes textStrokeAnim {
   0% {
     stroke-dasharray: 100%;
@@ -568,6 +640,26 @@ li:has(.nav__btn-resume) {
     stroke-dashoffset: 0%;
     fill: #0000;
     filter: drop-shadow(2px 2px 10px #0007);
+  }
+}
+
+@keyframes pulse-color {
+  75% {
+    color: #fff3;
+  }
+
+  100% {
+    color: var(--primary-color);
+  }
+}
+
+@keyframes traveling-line {
+  0% {
+    left: -50px;
+  }
+
+  100% {
+    left: calc(100% + 50px);
   }
 }
 

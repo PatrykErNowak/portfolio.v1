@@ -5,6 +5,9 @@ $heading-font: 'Roboto', sans-serif;
 $heading-font-weight: 500;
 $header-bgc: rgba(5, 5, 5, 1);
 
+$subheading-font-color: rgba(255, 255, 255, 0.2);
+$subheading-font-family: 'Kdam Thmor Pro', sans-serif;
+
 .header {
   display: flex;
   justify-content: start;
@@ -14,10 +17,26 @@ $header-bgc: rgba(5, 5, 5, 1);
   @media screen and (min-width: b.$medium) {
     justify-content: center;
   }
+
+  // --------------------------------------
+  // BG Styling
   // BG noise effect div
   .noise {
     z-index: -1;
     background-color: $header-bgc;
+  }
+
+  .myphoto {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+  }
+  // ---------------------------------------
+  &__heading-box {
+    position: relative;
   }
 
   &__heading {
@@ -26,7 +45,7 @@ $header-bgc: rgba(5, 5, 5, 1);
     justify-content: center;
     align-items: start;
     font-family: $heading-font;
-    font-size: clamp(8rem, 6rem + 7vw, 20rem);
+    font-size: clamp(8rem, 6rem + 10vw, 30rem);
     text-transform: uppercase;
     font-weight: $heading-font-weight;
     span {
@@ -78,6 +97,64 @@ $header-bgc: rgba(5, 5, 5, 1);
       }
     }
   }
+
+  &__subheading-box {
+    display: none;
+
+    @media screen and (min-width: b.$medium) {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1rem;
+      font-family: $subheading-font-family;
+      color: $subheading-font-color;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+  }
+  &__anime-line {
+    position: relative;
+    flex-grow: 1;
+    display: block;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -50px;
+      transform: translate(-50%, -50%);
+      height: 3px;
+      width: 50px;
+      opacity: 0.4;
+      background-color: c.$primary-color;
+      border-radius: 500px;
+      animation-name: traveling-line;
+      animation-duration: 5s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+  }
+
+  &__myname {
+    animation-name: pulse-color;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+  }
+  &__job-role {
+    animation-name: pulse-color;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
 }
 
 @keyframes textStrokeAnim {
@@ -96,5 +173,23 @@ $header-bgc: rgba(5, 5, 5, 1);
     stroke-dashoffset: 0%;
     fill: transparent;
     filter: drop-shadow(2px 2px 10px #0007);
+  }
+}
+
+@keyframes pulse-color {
+  75% {
+    color: $subheading-font-color;
+  }
+  100% {
+    color: c.$primary-color;
+  }
+}
+
+@keyframes traveling-line {
+  0% {
+    left: -50px;
+  }
+  100% {
+    left: calc(100% + 50px);
   }
 }

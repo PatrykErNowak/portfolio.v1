@@ -4,7 +4,9 @@
 
 $btn-radious: 3px;
 $btn-color: #eee;
-$btn-font-weight: 700;
+
+$btn-font-family: 'Roboto', sans-serif;
+$btn-font-weight: 500;
 $btn-primary-bgc: c.$primary-color;
 
 .btn {
@@ -16,6 +18,7 @@ $btn-primary-bgc: c.$primary-color;
   gap: 0.75em;
   padding: 0.7em 1.2em;
   color: $btn-color;
+  font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   cursor: pointer;
   transition: 0.5s;
