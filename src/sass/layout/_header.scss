@@ -1,5 +1,6 @@
 @use '../abstracts/colors' as c;
 @use '../abstracts/breakpoints' as b;
+@use '../abstracts/variables' as v;
 
 $heading-font: 'Roboto', sans-serif;
 $heading-font-weight: 500;
@@ -7,6 +8,13 @@ $header-bgc: rgba(5, 5, 5, 1);
 
 $subheading-font-color: rgba(255, 255, 255, 0.2);
 $subheading-font-family: 'Kdam Thmor Pro', sans-serif;
+
+// Desktop animation with line traveling left-right & pulse color
+$subheading-animation-duration: 5s;
+
+// Transition for desktop scroll animation
+$transition-duration: 150ms;
+$transition-function: linear;
 
 .header {
   display: flex;
@@ -29,12 +37,41 @@ $subheading-font-family: 'Kdam Thmor Pro', sans-serif;
   .myphoto {
     position: absolute;
     z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
+    bottom: 0;
+    opacity: 0.4;
+    height: 90%;
+    width: 100%;
+    background-image: url('../img/header/my photo.jpeg');
+    background-position: top;
+    background-size: cover;
+    filter: grayscale(100%);
+
+    @media screen and (min-width: b.$medium) {
+      height: unset;
+      top: 60%;
+      left: 50%;
+      aspect-ratio: 1.8/1;
+      transform: translate(-50%, -50%);
+      opacity: 0.1;
+      transition: opacity $transition-duration $transition-function;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5%;
+      transform: translateY(-50%);
+      background-color: $header-bgc;
+      box-shadow:
+        0 0 30px 30px $header-bgc,
+        0 0 15px 10px $header-bgc;
+    }
   }
   // ---------------------------------------
+  // HEADING
+
   &__heading-box {
     position: relative;
   }
@@ -48,52 +85,51 @@ $subheading-font-family: 'Kdam Thmor Pro', sans-serif;
     font-size: clamp(8rem, 6rem + 10vw, 30rem);
     text-transform: uppercase;
     font-weight: $heading-font-weight;
+    overflow: hidden;
+
     span {
-      line-height: 0.9;
+      line-height: 1;
       word-spacing: -10px;
+      @media screen and (min-width: b.$medium) {
+        display: block;
+        text-align: center;
+        line-height: normal;
+        word-spacing: normal;
+        transition: transform $transition-duration $transition-function;
+      }
     }
 
     // Only for mobile
-    .name {
+    .text-stroke-mobile {
       font-size: clamp(5rem, 4rem + 8vw, 20rem);
       color: transparent;
       text-shadow:
         0 0 1px rgba(20, 20, 20, 1),
         0 0 2px c.$font-color,
         0 0 3px c.$primary-color;
-
+      @media screen and (min-width: b.$medium) {
+        display: none;
+      }
       span {
         color: c.$primary-color;
       }
     }
 
-    .text-stroke {
+    .text-stroke-desktop {
       display: none;
-      font-size: clamp(5rem, 2rem + 8vw, 10rem);
-      letter-spacing: 10px;
-      fill: transparent;
-      stroke: c.$primary-color;
-      stroke-width: 1;
-      stroke-dasharray: 100%;
-      stroke-dashoffset: 100%;
-      animation: textStrokeAnim 4000ms linear both;
-      animation-iteration-count: 1;
-    }
-
-    @media screen and (min-width: b.$medium) {
-      display: block;
-      text-align: center;
-
-      span {
-        word-spacing: normal;
-      }
-      .name {
-        display: none;
-      }
-
-      .text-stroke {
+      @media screen and (min-width: b.$medium) {
         display: block;
         margin: 0.5em auto 0;
+        font-size: clamp(5rem, 2rem + 8vw, 10rem);
+        letter-spacing: 10px;
+        fill: transparent;
+        stroke: c.$primary-color;
+        stroke-width: 1;
+        stroke-dasharray: 100%;
+        stroke-dashoffset: 100%;
+        animation: textStrokeAnim 4000ms linear both;
+        animation-iteration-count: 1;
+        transition: transform $transition-duration $transition-function;
       }
     }
   }
@@ -109,11 +145,13 @@ $subheading-font-family: 'Kdam Thmor Pro', sans-serif;
       transform: translateY(-50%);
       display: flex;
       justify-content: space-between;
-      padding: 0 1rem;
-      font-family: $subheading-font-family;
+      padding: 0 1.5rem;
       color: $subheading-font-color;
+      font-family: $subheading-font-family;
       font-size: 2rem;
+      font-size: clamp(2rem, 1rem + 0.7vw, 3rem);
       text-transform: uppercase;
+      transition: opacity $transition-duration $transition-function;
     }
   }
   &__anime-line {
@@ -133,27 +171,18 @@ $subheading-font-family: 'Kdam Thmor Pro', sans-serif;
       opacity: 0.4;
       background-color: c.$primary-color;
       border-radius: 500px;
-      animation-name: traveling-line;
-      animation-duration: 5s;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
+      animation: traveling-line $subheading-animation-duration ease-in-out
+        infinite alternate;
     }
   }
 
   &__myname {
-    animation-name: pulse-color;
-    animation-duration: 5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate-reverse;
+    animation: pulse-color $subheading-animation-duration linear infinite
+      alternate-reverse;
   }
   &__job-role {
-    animation-name: pulse-color;
-    animation-duration: 5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation: pulse-color $subheading-animation-duration linear infinite
+      alternate;
   }
 }
 

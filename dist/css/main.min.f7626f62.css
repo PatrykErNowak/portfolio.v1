@@ -566,11 +566,39 @@ li:has(.nav__btn-resume) {
 
 .header .myphoto {
   z-index: -1;
-  width: 50%;
+  opacity: .4;
+  filter: grayscale();
+  background-image: url("../my photo.58fdaa6a.jpeg");
+  background-position: top;
+  background-size: cover;
+  width: 100%;
+  height: 90%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 0;
+}
+
+@media screen and (width >= 48em) {
+  .header .myphoto {
+    height: unset;
+    aspect-ratio: 1.8;
+    opacity: .1;
+    transition: opacity .15s linear;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.header .myphoto:before {
+  content: "";
+  background-color: #050505;
+  width: 100%;
+  height: 5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-50%);
+  box-shadow: 0 0 30px 30px #050505, 0 0 15px 10px #050505;
 }
 
 .header__heading-box {
@@ -586,51 +614,56 @@ li:has(.nav__btn-resume) {
   font-size: clamp(8rem, 6rem + 10vw, 30rem);
   font-weight: 500;
   display: flex;
+  overflow: hidden;
 }
 
 .header__heading span {
   word-spacing: -10px;
-  line-height: .9;
+  line-height: 1;
 }
 
-.header__heading .name {
+@media screen and (width >= 48em) {
+  .header__heading span {
+    text-align: center;
+    word-spacing: normal;
+    line-height: normal;
+    transition: transform .15s linear;
+    display: block;
+  }
+}
+
+.header__heading .text-stroke-mobile {
   color: #0000;
   text-shadow: 0 0 1px #141414, 0 0 2px var(--font-color), 0 0 3px var(--primary-color);
   font-size: clamp(5rem, 4rem + 8vw, 20rem);
 }
 
-.header__heading .name span {
+@media screen and (width >= 48em) {
+  .header__heading .text-stroke-mobile {
+    display: none;
+  }
+}
+
+.header__heading .text-stroke-mobile span {
   color: var(--primary-color);
 }
 
-.header__heading .text-stroke {
-  letter-spacing: 10px;
-  fill: #0000;
-  stroke: var(--primary-color);
-  stroke-width: 1px;
-  stroke-dasharray: 100%;
-  stroke-dashoffset: 100%;
-  font-size: clamp(5rem, 2rem + 8vw, 10rem);
-  animation: 4s linear both textStrokeAnim;
+.header__heading .text-stroke-desktop {
   display: none;
 }
 
 @media screen and (width >= 48em) {
-  .header__heading {
-    text-align: center;
-    display: block;
-  }
-
-  .header__heading span {
-    word-spacing: normal;
-  }
-
-  .header__heading .name {
-    display: none;
-  }
-
-  .header__heading .text-stroke {
+  .header__heading .text-stroke-desktop {
+    letter-spacing: 10px;
+    fill: #0000;
+    stroke: var(--primary-color);
+    stroke-width: 1px;
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 100%;
     margin: .5em auto 0;
+    font-size: clamp(5rem, 2rem + 8vw, 10rem);
+    transition: transform .15s linear;
+    animation: 4s linear both textStrokeAnim;
     display: block;
   }
 }
@@ -644,9 +677,10 @@ li:has(.nav__btn-resume) {
     color: #fff3;
     text-transform: uppercase;
     justify-content: space-between;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     font-family: Kdam Thmor Pro, sans-serif;
-    font-size: 2rem;
+    font-size: clamp(2rem, 1rem + .7vw, 3rem);
+    transition: opacity .15s linear;
     display: flex;
     position: absolute;
     top: 50%;
@@ -670,11 +704,7 @@ li:has(.nav__btn-resume) {
   border-radius: 500px;
   width: 50px;
   height: 3px;
-  animation-name: traveling-line;
-  animation-duration: 5s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation: 5s ease-in-out infinite alternate traveling-line;
   position: absolute;
   top: 50%;
   left: -50px;
@@ -682,19 +712,11 @@ li:has(.nav__btn-resume) {
 }
 
 .header__myname {
-  animation-name: pulse-color;
-  animation-duration: 5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
+  animation: 5s linear infinite alternate-reverse pulse-color;
 }
 
 .header__job-role {
-  animation-name: pulse-color;
-  animation-duration: 5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation: 5s linear infinite alternate pulse-color;
 }
 
 @keyframes textStrokeAnim {
