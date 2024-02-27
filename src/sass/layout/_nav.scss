@@ -119,29 +119,6 @@ $nav-font-size: 14px;
     }
   }
 
-  &__logo {
-    position: relative;
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 2px;
-      width: 100%;
-      background-color: c.$primary-color;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform v.$transition-duration v.$transition-function;
-    }
-
-    &:hover,
-    &:focus {
-      &::before {
-        transform: scaleX(1);
-      }
-    }
-  }
-
   &__btn-hamburger-box {
     width: 4.5rem;
     height: 4.5rem;

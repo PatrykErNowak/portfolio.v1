@@ -60,7 +60,7 @@
     </nav>
 
     <header class="header" data-js="header">
-      <div class="noise">
+      <div class="noise" aria-hidden="true">
         <div class="myphoto" data-js="header-photo"></div>
       </div>
       <div class="header__heading-box">
@@ -91,5 +91,39 @@
       </a>
     </header>
     <main style="height: 100vh; background-color: #333"></main>
+
+    <footer class="footer">
+      <a href="#" class="footer__logo logo" aria-label="Back Home"
+        >Pendev<span>.</span>
+      </a>
+      <div class="footer__links">
+        <a class="footer__link" href="mailto:patryk.nowak.dev@gmail.com"
+          ><span>Mail</span>
+          <svg class="icon">
+            <use xlink:href="./img/icons/sprite.svg#icon-mail"></use>
+          </svg>
+        </a>
+        <a
+          class="footer__link"
+          href="https://www.linkedin.com/in/patryk-ernest-nowak/"
+        >
+          <span>Linkedin</span>
+          <svg class="icon">
+            <use xlink:href="./img/icons/sprite.svg#icon-linkedin"></use>
+          </svg>
+        </a>
+        <a class="footer__link" href="https://github.com/PatrykErNowak">
+          <span>GitHub</span>
+          <svg class="icon">
+            <use xlink:href="./img/icons/sprite.svg#icon-github"></use>
+          </svg>
+        </a>
+      </div>
+      <!-- <p class="footer__text">Created &amp; Designed with passion.</p> -->
+      <p class="footer__rigths">
+        &copy; <span data-js="footer-year">2023</span> All rights reserved for
+        Patryk Nowak.
+      </p>
+    </footer>
   </body>
 </html>

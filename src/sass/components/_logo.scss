@@ -1,10 +1,13 @@
 @use '../abstracts/colors' as c;
+@use '../abstracts/variables' as v;
 
 .logo {
+  position: relative;
   line-height: 1;
   font-size: 1.5em;
   font-family: 'Homemade Apple', cursive;
   text-transform: capitalize;
+  overflow: hidden;
   span {
     color: c.$primary-color;
     font-size: 2em;
@@ -14,5 +17,25 @@
     width: 1.5em;
     aspect-ratio: 1/1;
     fill: c.$primary-color;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: c.$primary-color;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform v.$transition-duration v.$transition-function;
+  }
+
+  &:hover,
+  &:focus {
+    &::before {
+      transform: scaleX(1);
+    }
   }
 }
