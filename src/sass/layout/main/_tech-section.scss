@@ -1,0 +1,55 @@
+@use '../../abstracts/variables' as v;
+
+$tooltip-font-family: 'Kode Mono', monospace;
+$tooltip-font-color: rgba(255, 255, 255, 0.4);
+
+.tech {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  grid-template-rows: 1fr;
+  gap: 2rem;
+  justify-content: center;
+  justify-items: center;
+
+  &__item {
+    position: relative;
+    max-width: 8rem;
+    filter: grayscale(100%);
+    transition: filter v.$transition-duration v.$transition-function;
+    a {
+      width: 100%;
+      display: inline-block;
+    }
+
+    .icon {
+      width: 100%;
+      aspect-ratio: 1/1;
+      height: unset;
+    }
+
+    .tooltip {
+      position: absolute;
+      z-index: -1;
+      top: 110%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      color: $tooltip-font-color;
+      font-family: $tooltip-font-family;
+      font-size: clamp(1rem, 0.5rem + 0.4vw, 1.2rem);
+      opacity: 0;
+      transition:
+        opacity v.$transition-duration v.$transition-function,
+        transform v.$transition-duration v.$transition-function;
+    }
+
+    &:hover,
+    &:focus {
+      filter: grayscale(0);
+
+      .tooltip {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+  }
+}

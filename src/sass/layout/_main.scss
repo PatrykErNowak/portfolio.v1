@@ -1,0 +1,29 @@
+@use '../abstracts/colors' as c;
+
+main {
+  position: relative;
+  z-index: 0;
+  height: 200vh;
+  padding: 10rem 0;
+  padding: 5vw 0;
+  background-image: linear-gradient(
+    to top,
+    rgba(#100e17, 1) 97%,
+    rgba(#100e17, 0.5) 100%
+  );
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/bg.webp');
+    background-position: 50% 85%;
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+}

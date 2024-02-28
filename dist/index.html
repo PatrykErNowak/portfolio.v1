@@ -46,9 +46,7 @@
     </nav>
 
     <header class="header" data-js="header">
-      <div class="noise" aria-hidden="true">
-        <div class="myphoto" data-js="header-photo"></div>
-      </div>
+      <div class="myphoto" data-js="header-photo"></div>
       <div class="header__heading-box">
         <h1 class="header__heading">
           <span data-js="header-heading-top">hey, i&nbsp;am</span>
@@ -63,14 +61,88 @@
           <p class="header__job-role">Frontend Developer</p>
         </div>
       </div>
-      <a href="#" class="mouse-scroll" data-js="header-scroll">
+      <a href="#main" class="mouse-scroll" data-js="header-scroll">
         <span class="text">Scroll</span>
         <span class="mouse-outer">
           <span class="mouse-wheel"></span>
         </span>
       </a>
     </header>
-    <main style="background-color: #333; height: 100vh"></main>
+    <main id="main">
+      <section class="section wrapper-12">
+        <h2 class="section__title">
+          <span>&lt;</span>Tech-Stack<span>&#47;&gt;</span>
+        </h2>
+        <div class="section__content">
+          <ul class="tech">
+            <li class="tech__item">
+              <a href="#">
+                <span class="tooltip">HTML</span>
+                <svg class="icon">
+                  <use xlink:href="/img/sprite.af061885.svg#icon-html5"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="tech__item">
+              <a href="#">
+                <span class="tooltip">CSS</span>
+                <svg class="icon">
+                  <use xlink:href="/img/sprite.af061885.svg#icon-css3"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="tech__item">
+              <a href="#">
+                <span class="tooltip">SASS</span>
+                <svg class="icon">
+                  <use xlink:href="/img/sprite.af061885.svg#icon-sass"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="tech__item">
+              <a href="#">
+                <span class="tooltip">Gulp</span>
+                <svg class="icon">
+                  <use xlink:href="/img/sprite.af061885.svg#icon-gulp"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="tech__item">
+              <a href="#">
+                <span class="tooltip">JavaScript</span>
+                <svg class="icon">
+                  <use xlink:href="/img/sprite.af061885.svg#icon-js"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="tech__item">
+              <a href="#">
+                <span class="tooltip">TailwindCSS</span>
+                <svg class="icon">
+                  <use xlink:href="/img/sprite.af061885.svg#icon-tailwindcss"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="tech__item">
+              <a href="#">
+                <span class="tooltip">npm</span>
+                <svg class="icon">
+                  <use xlink:href="/img/sprite.af061885.svg#icon-npm"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="tech__item">
+              <a href="#">
+                <span class="tooltip">GIT</span>
+                <svg class="icon">
+                  <use xlink:href="/img/sprite.af061885.svg#icon-git"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer">
       <a href="#" class="footer__logo logo" aria-label="Back Home">Pendev<span>.</span>
