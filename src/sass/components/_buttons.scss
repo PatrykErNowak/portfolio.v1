@@ -18,8 +18,10 @@ $btn-primary-bgc: c.$primary-color;
   gap: 0.75em;
   padding: 0.7em 1.2em;
   color: $btn-color;
+  font-size: clamp(1.3rem, 0.7rem + 0.5vw, 1.5rem);
   font-family: $btn-font-family;
   font-weight: $btn-font-weight;
+  text-transform: capitalize;
   cursor: pointer;
   transition: 0.5s;
 
@@ -32,6 +34,7 @@ $btn-primary-bgc: c.$primary-color;
   &--primary {
     background-color: $btn-primary-bgc;
     border-radius: $btn-radious;
+    outline: transparent;
 
     &:before,
     &:after {
@@ -57,7 +60,8 @@ $btn-primary-bgc: c.$primary-color;
       bottom: 0;
       right: 0;
     }
-    &:hover {
+    &:hover,
+    &:focus {
       color: $btn-primary-bgc;
       background: transparent;
 

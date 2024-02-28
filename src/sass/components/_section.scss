@@ -13,12 +13,20 @@
 
   &__title {
     font-size: 2rem;
-    font-size: clamp(2.3rem, 1rem + 1.5vw, 4rem);
+    font-size: clamp(2.5rem, 1rem + 1.5vw, 4rem);
     font-family: 'Kode Mono', monospace;
 
     span {
       color: c.$primary-color;
     }
+  }
+
+  &__text {
+    letter-spacing: 1px;
+    opacity: 0.8;
+    line-height: 1.6;
+    text-align: center;
+    font-weight: 400;
   }
 
   &__content {
