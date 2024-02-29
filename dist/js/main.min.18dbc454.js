@@ -708,6 +708,9 @@ const updateYear = function() {
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jg2qd":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _spriteSvg = require("../../img/icons/sprite.svg");
+var _spriteSvgDefault = parcelHelpers.interopDefault(_spriteSvg);
 // --------------------------------------------------------------
 // DOM Elements
 const form = document.querySelector('[data-js="contact-form"]');
@@ -722,15 +725,6 @@ const ErrorMsg = {
     email: "Please enter a correct email address.",
     message: "The message should contain at least 10 characters."
 };
-const successMsg = `              <div class="success-msg">
-<p class="title">Thank you</p>
-<p class="desc">Your message has been delivered.</p>
-<svg class="icon">
-  <use
-    xlink:href="./img/icons/sprite.svg#icon-mail-checked"
-  ></use>
-</svg>
-</div>`;
 // disable default html validation
 form.setAttribute("novalidate", true);
 const renderErrorMsg = function(element, msg) {
@@ -757,7 +751,7 @@ const renderSuccessMessage = function() {
       <p class="desc">Your message has been delivered.</p>
       <svg class="icon">
         <use
-          xlink:href="./img/icons/sprite.svg#icon-mail-checked"
+          xlink:href="${(0, _spriteSvgDefault.default)}#icon-mail-checked"
         ></use>
       </svg>
     </div>`;
@@ -809,6 +803,44 @@ form.addEventListener("submit", (e)=>{
     e.preventDefault();
     submitForm();
 });
+
+},{"../../img/icons/sprite.svg":"lz8XD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lz8XD":[function(require,module,exports) {
+module.exports = require("9bdb0425a208f7c5").getBundleURL("10Mjw") + "../img/sprite.af061885.svg" + "?" + Date.now();
+
+},{"9bdb0425a208f7c5":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
 
 },{}]},["iqNlW","1SICI"], "1SICI", "parcelRequirec63f")
 

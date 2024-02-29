@@ -1,3 +1,5 @@
+import icons from '../../img/icons/sprite.svg';
+
 // --------------------------------------------------------------
 // DOM Elements
 const form = document.querySelector('[data-js="contact-form"]');
@@ -15,16 +17,6 @@ const ErrorMsg = {
   email: 'Please enter a correct email address.',
   message: 'The message should contain at least 10 characters.',
 };
-
-const successMsg = `              <div class="success-msg">
-<p class="title">Thank you</p>
-<p class="desc">Your message has been delivered.</p>
-<svg class="icon">
-  <use
-    xlink:href="./img/icons/sprite.svg#icon-mail-checked"
-  ></use>
-</svg>
-</div>`;
 
 // disable default html validation
 form.setAttribute('novalidate', true);
@@ -56,7 +48,7 @@ const renderSuccessMessage = function () {
       <p class="desc">Your message has been delivered.</p>
       <svg class="icon">
         <use
-          xlink:href="./img/icons/sprite.svg#icon-mail-checked"
+          xlink:href="${icons}#icon-mail-checked"
         ></use>
       </svg>
     </div>`;
