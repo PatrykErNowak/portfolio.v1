@@ -151,6 +151,11 @@ $form-border-color: rgba(255, 255, 255, 0.3);
 // Form validation
 
 .form {
+  &.success {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   input:user-invalid {
     outline-color: #e03131;
     border-color: #e03131;
@@ -165,6 +170,30 @@ $form-border-color: rgba(255, 255, 255, 0.3);
       font-size: 1.2em;
       font-weight: 400;
       color: #e03131;
+    }
+  }
+
+  .success-msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    visibility: visible;
+    text-align: center;
+
+    .title {
+      font-size: $title-font-size;
+      color: c.$primary-color;
+    }
+
+    .desc {
+      margin: 1.5rem 0 2rem;
+      color: $form-label-color;
+    }
+
+    .icon {
+      font-size: 4em;
+      fill: c.$primary-color;
     }
   }
 }

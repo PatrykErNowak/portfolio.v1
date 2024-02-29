@@ -722,6 +722,15 @@ const ErrorMsg = {
     email: "Please enter a correct email address.",
     message: "The message should contain at least 10 characters."
 };
+const successMsg = `              <div class="success-msg">
+<p class="title">Thank you</p>
+<p class="desc">Your message has been delivered.</p>
+<svg class="icon">
+  <use
+    xlink:href="./img/icons/sprite.svg#icon-mail-checked"
+  ></use>
+</svg>
+</div>`;
 // disable default html validation
 form.setAttribute("novalidate", true);
 const renderErrorMsg = function(element, msg) {
@@ -736,6 +745,24 @@ const removeErrorMsg = function(element) {
     const parent = element.closest(".form__row");
     const errorMsg = parent.querySelector(".error-msg");
     if (errorMsg) errorMsg.remove();
+};
+const LoadingState = function(addState) {
+    form.classList[addState === true ? "add" : "remove"]("loading");
+    submitBtn.disabled = addState;
+};
+const renderSuccessMessage = function() {
+    const html = `              
+    <div class="success-msg">
+      <p class="title">Thank you</p>
+      <p class="desc">Your message has been delivered.</p>
+      <svg class="icon">
+        <use
+          xlink:href="./img/icons/sprite.svg#icon-mail-checked"
+        ></use>
+      </svg>
+    </div>`;
+    form.classList.add("success");
+    form.insertAdjacentHTML("beforeend", html);
 };
 const checkRequiredFields = function() {
     let isError = false;
@@ -753,10 +780,6 @@ const checkRequiredFields = function() {
     } else removeErrorMsg(message);
     return !isError;
 };
-const LoadingState = function(addState) {
-    form.classList[addState === true ? "add" : "remove"]("loading");
-    submitBtn.disabled = addState;
-};
 const makeRequest = async function(data) {
     const res = await fetch(emailURL, {
         method: "POST",
@@ -765,9 +788,7 @@ const makeRequest = async function(data) {
         },
         body: new URLSearchParams(data).toString()
     });
-    console.log(res);
-    console.log("submit form");
-    if (res.ok) return res.json();
+    if (res.ok) return res;
     throw new Error(`${res.status}: ${res.statusText}`);
 };
 const submitForm = async function() {
@@ -777,11 +798,11 @@ const submitForm = async function() {
         LoadingState(true);
         try {
             const res = await makeRequest(formData);
-            console.log(res);
+            LoadingState(false);
+            renderSuccessMessage();
         } catch (error) {
             console.error(error);
         }
-        LoadingState(false);
     }
 };
 form.addEventListener("submit", (e)=>{

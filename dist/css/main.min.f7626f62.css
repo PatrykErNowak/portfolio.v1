@@ -1055,6 +1055,11 @@ main:before {
   border-color: var(--primary-color);
 }
 
+.form.success {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .form input:user-invalid {
   border-color: #e03131;
   outline-color: #e03131;
@@ -1071,6 +1076,30 @@ main:before {
   font-weight: 400;
   position: absolute;
   top: 100%;
+}
+
+.form .success-msg {
+  visibility: visible;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form .success-msg .title {
+  color: var(--primary-color);
+  font-size: clamp(2.1rem, 1rem + 1.5vw, 3rem);
+}
+
+.form .success-msg .desc {
+  color: #ffffffb3;
+  margin: 1.5rem 0 2rem;
+}
+
+.form .success-msg .icon {
+  fill: var(--primary-color);
+  font-size: 4em;
 }
 
 .loading {

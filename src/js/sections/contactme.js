@@ -16,6 +16,16 @@ const ErrorMsg = {
   message: 'The message should contain at least 10 characters.',
 };
 
+const successMsg = `              <div class="success-msg">
+<p class="title">Thank you</p>
+<p class="desc">Your message has been delivered.</p>
+<svg class="icon">
+  <use
+    xlink:href="./img/icons/sprite.svg#icon-mail-checked"
+  ></use>
+</svg>
+</div>`;
+
 // disable default html validation
 form.setAttribute('novalidate', true);
 
@@ -32,6 +42,27 @@ const removeErrorMsg = function (element) {
   const parent = element.closest('.form__row');
   const errorMsg = parent.querySelector('.error-msg');
   if (errorMsg) errorMsg.remove();
+};
+
+const LoadingState = function (addState) {
+  form.classList[addState === true ? 'add' : 'remove']('loading');
+  submitBtn.disabled = addState;
+};
+
+const renderSuccessMessage = function () {
+  const html = `              
+    <div class="success-msg">
+      <p class="title">Thank you</p>
+      <p class="desc">Your message has been delivered.</p>
+      <svg class="icon">
+        <use
+          xlink:href="./img/icons/sprite.svg#icon-mail-checked"
+        ></use>
+      </svg>
+    </div>`;
+
+  form.classList.add('success');
+  form.insertAdjacentHTML('beforeend', html);
 };
 
 const checkRequiredFields = function () {
@@ -59,20 +90,13 @@ const checkRequiredFields = function () {
   return !isError;
 };
 
-const LoadingState = function (addState) {
-  form.classList[addState === true ? 'add' : 'remove']('loading');
-  submitBtn.disabled = addState;
-};
-
 const makeRequest = async function (data) {
   const res = await fetch(emailURL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(data).toString(),
   });
-  console.log(res);
-  console.log('submit form');
-  if (res.ok) return res.json();
+  if (res.ok) return res;
 
   throw new Error(`${res.status}: ${res.statusText}`);
 };
@@ -87,12 +111,11 @@ const submitForm = async function () {
 
     try {
       const res = await makeRequest(formData);
-      console.log(res);
+      LoadingState(false);
+      renderSuccessMessage();
     } catch (error) {
       console.error(error);
     }
-
-    LoadingState(false);
   }
 };
 
