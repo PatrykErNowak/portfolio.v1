@@ -47,15 +47,15 @@ $mouseWheelHoverColor: $mouseHoverColor;
     transition: border-color $hoverTransition;
 
     .mouse-wheel {
-      $wheelWidth: #{ceil($mouseWidth / 6)};
-      $halfWheelWidth: #{$mouseWidth / 12};
+      $wheelWidth: ceil(calc($mouseWidth / 6));
+      $halfWheelWidth: calc($mouseWidth / 12);
 
       position: absolute;
       top: 10%;
       left: 50%;
       margin-left: -$halfWheelWidth;
 
-      height: #{$mouseHeight / 4};
+      height: calc($mouseHeight / 4);
       width: $wheelWidth;
       background-color: $mouseWheelColor;
 
@@ -84,7 +84,7 @@ $mouseWheelHoverColor: $mouseHoverColor;
     transform: scaleY(0.5) translateY(0);
   }
   20% {
-    transform: scaleY(1) translateY(#{$mouseHeight / 8});
+    transform: scaleY(1) translateY(calc($mouseHeight / 8));
   }
   60% {
     transform: scaleY(0.5) translateY(15px);

@@ -69,7 +69,7 @@
       </a>
     </header>
     <main id="main">
-      <section class="section wrapper-12">
+      <section class="section wrapper-12" aria-label="Technologies Stack">
         <h2 class="section__title">
           <span>&lt;</span>Tech-Stack<span>&#47;&gt;</span>
         </h2>
@@ -145,11 +145,27 @@
                 </svg>
               </a>
             </li>
+            <li class="tech__item">
+              <a href="#">
+                <span class="tooltip">MySQL</span>
+                <svg class="icon">
+                  <use xlink:href="/img/sprite.af061885.svg#icon-mysql"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="tech__item">
+              <a href="#">
+                <span class="tooltip">Postman</span>
+                <svg class="icon">
+                  <use xlink:href="/img/sprite.af061885.svg#icon-postman"></use>
+                </svg>
+              </a>
+            </li>
           </ul>
         </div>
       </section>
 
-      <section class="section wrapper-12">
+      <section class="section wrapper-12" aria-label="How to contact with me">
         <h2 class="section__title">
           <span>&lt;</span>Contact me<span>&#47;&gt;</span>
         </h2>
@@ -193,20 +209,20 @@
                 </li>
               </ul>
             </div>
-            <form action="#" class="contactme__form form">
+            <form action="#" class="contactme__form form" data-js="contact-form" netlify="">
               <div class="form__row">
                 <label for="fullname" class="form__label">Full name</label>
-                <input type="text" id="fullname" name="fullname" placeholder="Enter name" class="form__input">
+                <input type="text" id="fullname" name="fullname" autocomplete="name" placeholder="Enter name" pattern="^[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){0,}$" required="" class="form__input" data-js="contact-form__name">
               </div>
               <div class="form__row">
                 <label for="email" class="form__label">email address</label>
-                <input type="email" id="email" name="email" placeholder="Enter email" class="form__input">
+                <input type="email" id="email" name="email" placeholder="Enter email" pattern="^[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}" required="" class="form__input" data-js="contact-form__email">
               </div>
               <div class="form__row">
                 <label for="message" class="form__label">message</label>
-                <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter message" class="form__input"></textarea>
+                <textarea name="message" id="message" cols="30" rows="8" placeholder="Enter message" required="" minlength="10" class="form__input" data-js="contact-form__message"></textarea>
               </div>
-              <button type="submit" class="form__btn-submit btn btn--primary">
+              <button type="submit" class="form__btn-submit btn btn--primary" data-js="contact-form__submit-btn">
                 Send message
                 <svg class="icon">
                   <use xlink:href="/img/sprite.af061885.svg#icon-envelope"></use>

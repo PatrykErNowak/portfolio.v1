@@ -1011,6 +1011,7 @@ main:before {
 @media screen and (width >= 48em) {
   .form {
     margin-top: unset;
+    gap: 3.5rem;
   }
 
   .form:before, .form:after {
@@ -1052,6 +1053,55 @@ main:before {
 .form__input:focus, .form__input:focus-visible {
   outline-color: var(--primary-color);
   border-color: var(--primary-color);
+}
+
+.form input:user-invalid {
+  border-color: #e03131;
+  outline-color: #e03131;
+}
+
+.form__row {
+  position: relative;
+}
+
+.form__row .error-msg {
+  color: #e03131;
+  padding-top: .5rem;
+  font-size: 1.2em;
+  font-weight: 400;
+  position: absolute;
+  top: 100%;
+}
+
+.loading {
+  pointer-events: none;
+  opacity: .5;
+  position: relative;
+}
+
+.loading:after {
+  content: "";
+  z-index: 10;
+  border: 6px solid #fff6;
+  border-right-color: #ffffffc7;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: .6s linear infinite rotateSingleLoading;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)rotate(0);
+}
+
+@keyframes rotateSingleLoading {
+  0% {
+    transform: translate(-50%, -50%)rotate(0);
+  }
+
+  100% {
+    transform: translate(-50%, -50%)rotate(360deg);
+  }
 }
 
 .footer {

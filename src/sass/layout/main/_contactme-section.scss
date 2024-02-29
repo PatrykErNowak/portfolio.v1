@@ -103,6 +103,7 @@ $form-border-color: rgba(255, 255, 255, 0.3);
   }
   @media screen and (min-width: b.$medium) {
     margin-top: unset;
+    gap: 3.5rem;
     &::before,
     &::after {
       all: initial;
@@ -144,5 +145,58 @@ $form-border-color: rgba(255, 255, 255, 0.3);
       outline-color: c.$primary-color;
       border-color: c.$primary-color;
     }
+  }
+}
+
+// Form validation
+
+.form {
+  input:user-invalid {
+    outline-color: #e03131;
+    border-color: #e03131;
+  }
+
+  &__row {
+    position: relative;
+    .error-msg {
+      position: absolute;
+      top: 100%;
+      padding-top: 0.5rem;
+      font-size: 1.2em;
+      font-weight: 400;
+      color: #e03131;
+    }
+  }
+}
+
+// Form loading state - Add style to Form Element
+
+.loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.loading::after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 6px solid rgba(255, 255, 255, 0.4);
+  border-right-color: rgba(255, 255, 255, 0.78);
+  transform: translate(-50%, -50%) rotate(0deg);
+  content: '';
+  animation: rotateSingleLoading 0.6s infinite linear;
+  z-index: 10;
+}
+
+@keyframes rotateSingleLoading {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
