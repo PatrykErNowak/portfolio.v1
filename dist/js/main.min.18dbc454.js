@@ -586,11 +586,12 @@ var _footerJs = require("./sections/footer.js");
 const init = function() {
     _navJs.mobileBtnHandler();
     _headerJs.controlHeaderAnimation();
+    _contactmeJs.formHandler();
     _footerJs.updateYear();
 };
 init();
 
-},{"./sections/nav.js":"kwGx8","./sections/header.js":"6echj","./sections/footer.js":"eEEvq","./sections/contactme.js":"jg2qd"}],"kwGx8":[function(require,module,exports) {
+},{"./sections/nav.js":"kwGx8","./sections/header.js":"6echj","./sections/contactme.js":"jg2qd","./sections/footer.js":"eEEvq"}],"kwGx8":[function(require,module,exports) {
 // --------- NAVIGATION
 // Elements
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -697,37 +698,31 @@ const isMobileView = function() {
     return window.navigator.userAgentData?.mobile || window.matchMedia("(max-width: 768px)").matches;
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eEEvq":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "updateYear", ()=>updateYear);
-const spanYear = document.querySelector('[data-js="footer-year"]');
-const updateYear = function() {
-    const actualYear = new Date().getFullYear();
-    spanYear.innerHTML = actualYear;
-};
-
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jg2qd":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "formHandler", ()=>formHandler);
 var _spriteSvg = require("../../img/icons/sprite.svg");
 var _spriteSvgDefault = parcelHelpers.interopDefault(_spriteSvg);
 // --------------------------------------------------------------
 // DOM Elements
 const form = document.querySelector('[data-js="contact-form"]');
-const name = document.querySelector('[data-js="contact-form__name"]');
-const email = document.querySelector('[data-js="contact-form__email"]');
-const message = document.querySelector('[data-js="contact-form__message"]');
 const submitBtn = document.querySelector('[data-js="contact-form__submit-btn"]');
 // -------------------------------------------------------------
 const emailURL = "/"; // "/" - url for netlify forms
 const ErrorMsg = {
-    fullname: "The Full name should contain at least 3 characters.",
+    name: "The Full name should contain at least 3 characters.",
     email: "Please enter a correct email address.",
     message: "The message should contain at least 10 characters."
 };
+// --------------------------------------------------------------
 // disable default html validation
 form.setAttribute("novalidate", true);
-const renderErrorMsg = function(element, msg) {
+/**
+ * Renders 'error' under the specified DOM Element with specified message.
+ * @param {object} element - Input DOM Element
+ * @param {string} msg - Text string to be displayed
+ */ const renderInputErrorMsg = function(element, msg) {
     const parent = element.closest(".form__row");
     const html = `                
     <p class="error-msg">
@@ -735,43 +730,55 @@ const renderErrorMsg = function(element, msg) {
      </p>`;
     parent.insertAdjacentHTML("beforeend", html);
 };
-const removeErrorMsg = function(element) {
+/**
+ * Remove error message under the specified DOM Element.
+ * @param {object} element - Input DOM Element
+ */ const removeInputErrorMsg = function(element) {
     const parent = element.closest(".form__row");
     const errorMsg = parent.querySelector(".error-msg");
     if (errorMsg) errorMsg.remove();
 };
-const LoadingState = function(addState) {
+// Adding or removing loading state from FORM depends on passed parameter
+/**
+ * Render or remove loading spinner depends on state
+ * @param {boolean} addState - true = add loading spinner; false = remove loading spinner
+ */ const loadingState = function(addState) {
     form.classList[addState === true ? "add" : "remove"]("loading");
     submitBtn.disabled = addState;
 };
-const renderSuccessMessage = function() {
+/**
+ * Render Success message or Error Message for entire form.
+ * @param {string} msgType - accepts two strings: 'success' or 'error'
+ */ const renderFormMessage = function(msgType) {
+    const className = msgType;
+    const title = msgType === "success" ? "Thank you" : "Error";
+    const msg = msgType === "success" ? "Your message has been delivered." : "Sorry, something went wrong. Please try again later.";
+    const icon = msgType === "success" ? "checked" : "error";
     const html = `              
-    <div class="success-msg">
-      <p class="title">Thank you</p>
-      <p class="desc">Your message has been delivered.</p>
+    <div class="message--${className}">
+      <p class="title">${title}</p>
+      <p class="desc">${msg}</p>
       <svg class="icon">
         <use
-          xlink:href="${(0, _spriteSvgDefault.default)}#icon-mail-checked"
+          xlink:href="${(0, _spriteSvgDefault.default)}#icon-mail-${icon}"
         ></use>
       </svg>
     </div>`;
-    form.classList.add("success");
+    form.classList.add("form-message");
     form.insertAdjacentHTML("beforeend", html);
 };
 const checkRequiredFields = function() {
     let isError = false;
-    if (!name.checkValidity()) {
-        isError = true;
-        renderErrorMsg(name, ErrorMsg.fullname);
-    } else removeErrorMsg(name);
-    if (!email.checkValidity()) {
-        isError = true;
-        renderErrorMsg(email, ErrorMsg.email);
-    } else removeErrorMsg(email);
-    if (!message.checkValidity()) {
-        isError = true;
-        renderErrorMsg(message, ErrorMsg.message);
-    } else removeErrorMsg(message);
+    const inputs = form.querySelectorAll(":where(input, textarea)");
+    inputs.forEach((el)=>{
+        const datasetJs = el.dataset.js;
+        const elName = datasetJs.slice(datasetJs.lastIndexOf("_") + 1);
+        removeInputErrorMsg(el);
+        if (!el.checkValidity()) {
+            isError = true;
+            renderInputErrorMsg(el, ErrorMsg[elName]);
+        }
+    });
     return !isError;
 };
 const makeRequest = async function(data) {
@@ -789,20 +796,22 @@ const submitForm = async function() {
     let isFormValid = checkRequiredFields();
     if (isFormValid) {
         const formData = new FormData(form);
-        LoadingState(true);
+        loadingState(true);
         try {
-            const res = await makeRequest(formData);
-            LoadingState(false);
-            renderSuccessMessage();
+            await makeRequest(formData);
+            renderFormMessage("success");
+            loadingState(false);
         } catch (error) {
-            console.error(error);
+            renderFormMessage("error");
         }
     }
 };
-form.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    submitForm();
-});
+const formHandler = function() {
+    form.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        submitForm();
+    });
+};
 
 },{"../../img/icons/sprite.svg":"lz8XD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lz8XD":[function(require,module,exports) {
 module.exports = require("9bdb0425a208f7c5").getBundleURL("10Mjw") + "../img/sprite.af061885.svg" + "?" + Date.now();
@@ -842,6 +851,16 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}]},["iqNlW","1SICI"], "1SICI", "parcelRequirec63f")
+},{}],"eEEvq":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "updateYear", ()=>updateYear);
+const spanYear = document.querySelector('[data-js="footer-year"]');
+const updateYear = function() {
+    const actualYear = new Date().getFullYear();
+    spanYear.innerHTML = actualYear;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["iqNlW","1SICI"], "1SICI", "parcelRequirec63f")
 
 //# sourceMappingURL=main.min.18dbc454.js.map

@@ -6,6 +6,7 @@ import * as footer from './sections/footer.js';
 const init = function () {
   nav.mobileBtnHandler();
   header.controlHeaderAnimation();
+  contactme.formHandler();
   footer.updateYear();
 };
 init();

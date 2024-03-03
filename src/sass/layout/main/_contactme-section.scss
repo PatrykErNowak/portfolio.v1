@@ -13,6 +13,9 @@ $form-label-color: rgba(255, 255, 255, 0.7);
 $form-input-color: rgba(255, 255, 255, 0.8);
 $form-border-color: rgba(255, 255, 255, 0.3);
 
+$form-message-title-font-size: clamp(3.4rem, 1.5rem + 2vw, 5.5rem);
+$form-error-font-color: #e03131;
+
 .contactme {
   background-color: $background-color;
   padding: 2rem;
@@ -151,14 +154,14 @@ $form-border-color: rgba(255, 255, 255, 0.3);
 // Form validation
 
 .form {
-  &.success {
+  &.form-message {
     visibility: hidden;
     pointer-events: none;
   }
 
   input:user-invalid {
-    outline-color: #e03131;
-    border-color: #e03131;
+    outline-color: $form-error-font-color;
+    border-color: $form-error-font-color;
   }
 
   &__row {
@@ -169,31 +172,50 @@ $form-border-color: rgba(255, 255, 255, 0.3);
       padding-top: 0.5rem;
       font-size: 1.2em;
       font-weight: 400;
-      color: #e03131;
+      color: $form-error-font-color;
     }
   }
 
-  .success-msg {
+  .message {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
+    width: 100%;
     transform: translate(-50%, -50%);
     visibility: visible;
     text-align: center;
 
     .title {
-      font-size: $title-font-size;
-      color: c.$primary-color;
+      font-size: $form-message-title-font-size;
+      text-transform: uppercase;
     }
 
     .desc {
-      margin: 1.5rem 0 2rem;
+      margin: 2.5rem 0 2rem;
       color: $form-label-color;
     }
 
     .icon {
       font-size: 4em;
-      fill: c.$primary-color;
+    }
+
+    &--success {
+      @extend .message;
+      .title {
+        color: c.$primary-color;
+      }
+      .icon {
+        fill: c.$primary-color;
+      }
+    }
+    &--error {
+      @extend .message;
+      .title {
+        color: $form-error-font-color;
+      }
+      .icon {
+        fill: $form-error-font-color;
+      }
     }
   }
 }

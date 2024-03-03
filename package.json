@@ -9,7 +9,7 @@
   "source": "src/index.html",
   "scripts": {
     "clean:output": "rimraf dist",
-    "start": "npm run clean:output && parcel  --open chrome",
+    "start": "npm run clean:output && parcel  --open chrome --no-cache",
     "build": "npm run clean:output && parcel build --public-url ./"
   },
   "author": "pendev",

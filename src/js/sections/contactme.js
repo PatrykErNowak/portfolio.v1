@@ -3,9 +3,6 @@ import icons from '../../img/icons/sprite.svg';
 // --------------------------------------------------------------
 // DOM Elements
 const form = document.querySelector('[data-js="contact-form"]');
-const name = document.querySelector('[data-js="contact-form__name"]');
-const email = document.querySelector('[data-js="contact-form__email"]');
-const message = document.querySelector('[data-js="contact-form__message"]');
 const submitBtn = document.querySelector(
   '[data-js="contact-form__submit-btn"]',
 );
@@ -13,15 +10,22 @@ const submitBtn = document.querySelector(
 const emailURL = '/'; // "/" - url for netlify forms
 
 const ErrorMsg = {
-  fullname: 'The Full name should contain at least 3 characters.',
+  name: 'The Full name should contain at least 3 characters.',
   email: 'Please enter a correct email address.',
   message: 'The message should contain at least 10 characters.',
 };
 
+// --------------------------------------------------------------
+
 // disable default html validation
 form.setAttribute('novalidate', true);
 
-const renderErrorMsg = function (element, msg) {
+/**
+ * Renders 'error' under the specified DOM Element with specified message.
+ * @param {object} element - Input DOM Element
+ * @param {string} msg - Text string to be displayed
+ */
+const renderInputErrorMsg = function (element, msg) {
   const parent = element.closest('.form__row');
   const html = `                
     <p class="error-msg">
@@ -30,54 +34,68 @@ const renderErrorMsg = function (element, msg) {
   parent.insertAdjacentHTML('beforeend', html);
 };
 
-const removeErrorMsg = function (element) {
+/**
+ * Remove error message under the specified DOM Element.
+ * @param {object} element - Input DOM Element
+ */
+const removeInputErrorMsg = function (element) {
   const parent = element.closest('.form__row');
   const errorMsg = parent.querySelector('.error-msg');
   if (errorMsg) errorMsg.remove();
 };
 
-const LoadingState = function (addState) {
+// Adding or removing loading state from FORM depends on passed parameter
+/**
+ * Render or remove loading spinner depends on state
+ * @param {boolean} addState - true = add loading spinner; false = remove loading spinner
+ */
+const loadingState = function (addState) {
   form.classList[addState === true ? 'add' : 'remove']('loading');
   submitBtn.disabled = addState;
 };
 
-const renderSuccessMessage = function () {
+/**
+ * Render Success message or Error Message for entire form.
+ * @param {string} msgType - accepts two strings: 'success' or 'error'
+ */
+const renderFormMessage = function (msgType) {
+  const className = msgType;
+  const title = msgType === 'success' ? 'Thank you' : 'Error';
+  const msg =
+    msgType === 'success'
+      ? 'Your message has been delivered.'
+      : 'Sorry, something went wrong. Please try again later.';
+  const icon = msgType === 'success' ? 'checked' : 'error';
+
   const html = `              
-    <div class="success-msg">
-      <p class="title">Thank you</p>
-      <p class="desc">Your message has been delivered.</p>
+    <div class="message--${className}">
+      <p class="title">${title}</p>
+      <p class="desc">${msg}</p>
       <svg class="icon">
         <use
-          xlink:href="${icons}#icon-mail-checked"
+          xlink:href="${icons}#icon-mail-${icon}"
         ></use>
       </svg>
     </div>`;
 
-  form.classList.add('success');
+  form.classList.add('form-message');
   form.insertAdjacentHTML('beforeend', html);
 };
 
 const checkRequiredFields = function () {
   let isError = false;
 
-  if (!name.checkValidity()) {
-    isError = true;
-    renderErrorMsg(name, ErrorMsg.fullname);
-  } else {
-    removeErrorMsg(name);
-  }
-  if (!email.checkValidity()) {
-    isError = true;
-    renderErrorMsg(email, ErrorMsg.email);
-  } else {
-    removeErrorMsg(email);
-  }
-  if (!message.checkValidity()) {
-    isError = true;
-    renderErrorMsg(message, ErrorMsg.message);
-  } else {
-    removeErrorMsg(message);
-  }
+  const inputs = form.querySelectorAll(':where(input, textarea)');
+  inputs.forEach((el) => {
+    const datasetJs = el.dataset.js;
+    const elName = datasetJs.slice(datasetJs.lastIndexOf('_') + 1);
+    removeInputErrorMsg(el);
+
+    if (!el.checkValidity()) {
+      isError = true;
+      renderInputErrorMsg(el, ErrorMsg[elName]);
+    }
+  });
 
   return !isError;
 };
@@ -89,7 +107,6 @@ const makeRequest = async function (data) {
     body: new URLSearchParams(data).toString(),
   });
   if (res.ok) return res;
-
   throw new Error(`${res.status}: ${res.statusText}`);
 };
 
@@ -99,19 +116,21 @@ const submitForm = async function () {
   if (isFormValid) {
     const formData = new FormData(form);
 
-    LoadingState(true);
+    loadingState(true);
 
     try {
-      const res = await makeRequest(formData);
-      LoadingState(false);
-      renderSuccessMessage();
+      await makeRequest(formData);
+      renderFormMessage('success');
+      loadingState(false);
     } catch (error) {
-      console.error(error);
+      renderFormMessage('error');
     }
   }
 };
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  submitForm();
-});
+export const formHandler = function () {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitForm();
+  });
+};
