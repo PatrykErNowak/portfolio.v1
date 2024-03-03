@@ -707,11 +707,12 @@ var _spriteSvgDefault = parcelHelpers.interopDefault(_spriteSvg);
 // --------------------------------------------------------------
 // DOM Elements
 const form = document.querySelector('[data-js="contact-form"]');
+const inputs = form.querySelectorAll('[data-js="contact-form__input"]');
 const submitBtn = document.querySelector('[data-js="contact-form__submit-btn"]');
 // -------------------------------------------------------------
 const emailURL = "/"; // "/" - url for netlify forms
 const ErrorMsg = {
-    name: "The Full name should contain at least 3 characters.",
+    fullname: "The Full name should contain at least 3 characters.",
     email: "Please enter a correct email address.",
     message: "The message should contain at least 10 characters."
 };
@@ -769,14 +770,11 @@ form.setAttribute("novalidate", true);
 };
 const checkRequiredFields = function() {
     let isError = false;
-    const inputs = form.querySelectorAll(":where(input, textarea)");
     inputs.forEach((el)=>{
-        const datasetJs = el.dataset.js;
-        const elName = datasetJs.slice(datasetJs.lastIndexOf("_") + 1);
         removeInputErrorMsg(el);
         if (!el.checkValidity()) {
             isError = true;
-            renderInputErrorMsg(el, ErrorMsg[elName]);
+            renderInputErrorMsg(el, ErrorMsg[el.name]);
         }
     });
     return !isError;
