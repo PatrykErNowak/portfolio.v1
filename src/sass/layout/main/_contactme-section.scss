@@ -82,7 +82,7 @@ $form-error-font-color: #e03131;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
   padding: 2rem 0;
   margin-top: 4rem;
   &::before {
@@ -170,9 +170,13 @@ $form-error-font-color: #e03131;
       position: absolute;
       top: 100%;
       padding-top: 0.5rem;
-      font-size: 1.2em;
+      font-size: 1.1em;
       font-weight: 400;
       color: $form-error-font-color;
+
+      @media screen and (min-width: b.$medium) {
+        font-size: 1.2em;
+      }
     }
   }
 

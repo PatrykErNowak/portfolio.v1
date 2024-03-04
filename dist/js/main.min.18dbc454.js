@@ -581,17 +581,19 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"1SICI":[function(require,module,exports) {
 var _navJs = require("./sections/nav.js");
 var _headerJs = require("./sections/header.js");
+var _projectsJs = require("./sections/projects.js");
 var _contactmeJs = require("./sections/contactme.js");
 var _footerJs = require("./sections/footer.js");
 const init = function() {
     _navJs.mobileBtnHandler();
     _headerJs.controlHeaderAnimation();
+    _projectsJs.handl3DImgAnimation();
     _contactmeJs.formHandler();
     _footerJs.updateYear();
 };
 init();
 
-},{"./sections/nav.js":"kwGx8","./sections/header.js":"6echj","./sections/contactme.js":"jg2qd","./sections/footer.js":"eEEvq"}],"kwGx8":[function(require,module,exports) {
+},{"./sections/nav.js":"kwGx8","./sections/header.js":"6echj","./sections/contactme.js":"jg2qd","./sections/footer.js":"eEEvq","./sections/projects.js":"17g7p"}],"kwGx8":[function(require,module,exports) {
 // --------- NAVIGATION
 // Elements
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -859,6 +861,34 @@ const updateYear = function() {
     spanYear.innerHTML = actualYear;
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["iqNlW","1SICI"], "1SICI", "parcelRequirec63f")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"17g7p":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "handl3DImgAnimation", ()=>handl3DImgAnimation);
+var _helpersJs = require("../helpers.js");
+const imgs3D = document.querySelectorAll('[data-js="img3D"]');
+const rotate3dElement = function(e, target, maxDegrees, scale) {
+    const rotateYposition = (e.layerX / target.scrollWidth * 2 - 1) * maxDegrees;
+    const rotateXposition = (e.layerY / target.scrollHeight * 2 - 1) * maxDegrees;
+    target.style.transform = `perspective(1200px) rotateX(${rotateXposition}deg) rotateY(${-rotateYposition}deg) scale3d(${scale}, ${scale}, ${scale})`;
+};
+const handl3DImgAnimation = function() {
+    if ((0, _helpersJs.isMobileView)()) return;
+    imgs3D.forEach((img)=>{
+        const screenCentralPoint = window.screen.width / 2;
+        const isLeft = img.getBoundingClientRect().right < screenCentralPoint;
+        const rotateY = isLeft ? "" : "-";
+        img.addEventListener("mousemove", (e)=>{
+            img.style.transition = "transform 100ms ease";
+            rotate3dElement(e, img, 10, 1.05);
+        });
+        img.addEventListener("mouseout", (e)=>{
+            img.style.transition = "transform 300ms ease";
+            img.style.transform = `perspective(1200px) rotateX(-2deg) rotateY(${rotateY}7deg) scale3d(1.05, 1.05, 1)`;
+        });
+    });
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../helpers.js":"hGI1E"}]},["iqNlW","1SICI"], "1SICI", "parcelRequirec63f")
 
 //# sourceMappingURL=main.min.18dbc454.js.map

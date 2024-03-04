@@ -1,0 +1,188 @@
+@use '../../abstracts/breakpoints' as b;
+@use '../../abstracts/colors' as c;
+@use '../../abstracts/variables' as v;
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 7rem;
+  @media screen and (min-width: b.$medium) {
+    gap: 15rem;
+    margin-top: 5rem;
+  }
+}
+
+.project {
+  display: grid;
+  gap: 3rem;
+  @media screen and (min-width: b.$medium) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12rem;
+  }
+
+  &:not(:first-child) {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -3.5rem;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      border-radius: 500px;
+      background-color: c.$primary-color;
+      opacity: 0.3;
+
+      @media screen and (min-width: b.$medium) {
+        display: none;
+      }
+    }
+  }
+
+  &__info-box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    @media screen and (min-width: b.$medium) {
+      text-align: start;
+    }
+  }
+
+  &__name {
+    margin-bottom: 0.75em;
+    font-size: clamp(2.2rem, 1rem + 1.5vw, 3rem);
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+
+  &__techs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75em;
+    flex-wrap: wrap;
+    @media screen and (min-width: b.$medium) {
+      justify-content: start;
+      gap: 1em;
+    }
+
+    li {
+      position: relative;
+      padding: 1em 2em;
+      font-size: clamp(1rem, 0.5rem + 0.4vw, 1.4rem);
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: c.$primary-color;
+        border-radius: 500px;
+        opacity: 0.25;
+      }
+    }
+  }
+
+  &__desc {
+    line-height: 1.5;
+    color: #ffffff8c;
+    margin: 1em 0;
+  }
+  &__links-box {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1em;
+    @media screen and (min-width: b.$medium) {
+      justify-content: start;
+      gap: 3em;
+      margin-top: auto;
+    }
+  }
+  &__link {
+    width: max-content;
+  }
+
+  &__img-box {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    aspect-ratio: 16/8.1;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media screen and (min-width: b.$medium) {
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 2%;
+        width: 90%;
+        height: 90%;
+        border: 2px solid c.$primary-color;
+        opacity: 0.3;
+        transition: all 300ms;
+      }
+
+      img {
+        min-height: 95%;
+        max-height: 95%;
+        min-width: 95%;
+        max-width: 95%;
+        filter: grayscale(100);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: filter v.$transition-duration v.$transition-function;
+      }
+
+      &:hover {
+        &::before {
+          transform: scale(0.95);
+        }
+        img {
+          filter: grayscale(0);
+        }
+      }
+    }
+  }
+
+  // Change order for even projects
+  @media screen and (min-width: b.$medium) {
+    transition-property: transform, scale;
+    transform-style: preserve-3d;
+    perspective: 1200px;
+    &:nth-child(even) {
+      .project__img-box {
+        order: -1;
+        justify-content: end;
+        transform: perspective(1200px) rotateX(-2deg) rotateY(7deg)
+          scale3d(1.05, 1.05, 1);
+
+        &::before {
+          left: 2%;
+          right: unset;
+        }
+      }
+    }
+    &:nth-child(odd) {
+      .project__img-box {
+        order: 1;
+        justify-content: start;
+        transform: perspective(1200px) rotateX(-2deg) rotateY(-7deg)
+          scale3d(1.05, 1.05, 1);
+
+        &::before {
+          right: 2%;
+          left: unset;
+        }
+      }
+    }
+  }
+}

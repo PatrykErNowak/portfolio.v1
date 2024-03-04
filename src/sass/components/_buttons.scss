@@ -32,6 +32,7 @@ $btn-primary-bgc: c.$primary-color;
   }
 
   &--primary {
+    @extend .btn;
     background-color: $btn-primary-bgc;
     border-radius: $btn-radious;
     outline: transparent;
@@ -85,6 +86,34 @@ $btn-primary-bgc: c.$primary-color;
           // wait for :before
           width 0.25s ease-out 0.5s,
           height 0.25s ease-out 0.75s; // wait for width
+      }
+    }
+  }
+
+  &--secondary {
+    @extend .btn;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 1px;
+      width: calc(105% - 1.2em * 2);
+      margin: 0 auto;
+      background-color: c.$primary-color;
+      transition:
+        transform v.$transition-duration v.$transition-function,
+        box-shadow v.$transition-duration v.$transition-function;
+    }
+    &:hover {
+      &::before {
+        transform: translateX(-50%) scaleY(2) scaleX(1.2);
+        box-shadow:
+          0 -5px 10px c.$primary-color,
+          0 -10px 15px c.$primary-color,
+          0 -15px 25px c.$primary-color;
       }
     }
   }

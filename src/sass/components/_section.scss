@@ -5,10 +5,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 4rem;
   padding: 4rem 1rem;
   @media screen and (min-width: b.$medium) {
-    gap: 5rem;
+    gap: 6rem;
+    padding: 8rem 1rem;
+  }
+
+  &--left {
+    @extend .section;
+    @media screen and (min-width: b.$medium) {
+      align-items: start;
+    }
+  }
+
+  &--small-gap {
+    @media screen and (min-width: b.$medium) {
+      gap: 4rem;
+    }
   }
 
   &__title {
@@ -25,7 +39,7 @@
     letter-spacing: 1px;
     opacity: 0.8;
     line-height: 1.6;
-    text-align: center;
+    // text-align: center;
     font-weight: 400;
   }
 
