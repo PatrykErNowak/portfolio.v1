@@ -155,10 +155,11 @@ $transition-function: linear;
       padding: 0 1.5rem;
       color: $subheading-font-color;
       font-family: $subheading-font-family;
-      font-size: 2rem;
-      font-size: clamp(2rem, 1rem + 0.7vw, 3rem);
       text-transform: uppercase;
       transition: opacity $transition-duration $transition-function;
+      p {
+        font-size: clamp(2rem, 1rem + 0.7vw, 3rem);
+      }
     }
   }
   &__anime-line {

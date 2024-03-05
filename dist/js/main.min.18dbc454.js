@@ -593,7 +593,7 @@ const init = function() {
 };
 init();
 
-},{"./sections/nav.js":"kwGx8","./sections/header.js":"6echj","./sections/contactme.js":"jg2qd","./sections/footer.js":"eEEvq","./sections/projects.js":"17g7p"}],"kwGx8":[function(require,module,exports) {
+},{"./sections/nav.js":"kwGx8","./sections/header.js":"6echj","./sections/projects.js":"17g7p","./sections/contactme.js":"jg2qd","./sections/footer.js":"eEEvq"}],"kwGx8":[function(require,module,exports) {
 // --------- NAVIGATION
 // Elements
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -700,7 +700,35 @@ const isMobileView = function() {
     return window.navigator.userAgentData?.mobile || window.matchMedia("(max-width: 768px)").matches;
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jg2qd":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"17g7p":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "handl3DImgAnimation", ()=>handl3DImgAnimation);
+var _helpersJs = require("../helpers.js");
+const imgs3D = document.querySelectorAll('[data-js="img3D"]');
+const rotate3dElement = function(e, target, maxDegrees, scale) {
+    const rotateYposition = (e.layerX / target.scrollWidth * 2 - 1) * maxDegrees;
+    const rotateXposition = (e.layerY / target.scrollHeight * 2 - 1) * maxDegrees;
+    target.style.transform = `perspective(1200px) rotateX(${rotateXposition}deg) rotateY(${-rotateYposition}deg) scale3d(${scale}, ${scale}, ${scale})`;
+};
+const handl3DImgAnimation = function() {
+    if ((0, _helpersJs.isMobileView)()) return;
+    imgs3D.forEach((img)=>{
+        const screenCentralPoint = window.screen.width / 2;
+        const isLeft = img.getBoundingClientRect().right < screenCentralPoint;
+        const rotateY = isLeft ? "" : "-";
+        img.addEventListener("mousemove", (e)=>{
+            img.style.transition = "transform 100ms ease";
+            rotate3dElement(e, img, 10, 1.05);
+        });
+        img.addEventListener("mouseout", (e)=>{
+            img.style.transition = "transform 300ms ease";
+            img.style.transform = `perspective(1200px) rotateX(-2deg) rotateY(${rotateY}7deg) scale3d(1.05, 1.05, 1)`;
+        });
+    });
+};
+
+},{"../helpers.js":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jg2qd":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "formHandler", ()=>formHandler);
@@ -861,34 +889,6 @@ const updateYear = function() {
     spanYear.innerHTML = actualYear;
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"17g7p":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "handl3DImgAnimation", ()=>handl3DImgAnimation);
-var _helpersJs = require("../helpers.js");
-const imgs3D = document.querySelectorAll('[data-js="img3D"]');
-const rotate3dElement = function(e, target, maxDegrees, scale) {
-    const rotateYposition = (e.layerX / target.scrollWidth * 2 - 1) * maxDegrees;
-    const rotateXposition = (e.layerY / target.scrollHeight * 2 - 1) * maxDegrees;
-    target.style.transform = `perspective(1200px) rotateX(${rotateXposition}deg) rotateY(${-rotateYposition}deg) scale3d(${scale}, ${scale}, ${scale})`;
-};
-const handl3DImgAnimation = function() {
-    if ((0, _helpersJs.isMobileView)()) return;
-    imgs3D.forEach((img)=>{
-        const screenCentralPoint = window.screen.width / 2;
-        const isLeft = img.getBoundingClientRect().right < screenCentralPoint;
-        const rotateY = isLeft ? "" : "-";
-        img.addEventListener("mousemove", (e)=>{
-            img.style.transition = "transform 100ms ease";
-            rotate3dElement(e, img, 10, 1.05);
-        });
-        img.addEventListener("mouseout", (e)=>{
-            img.style.transition = "transform 300ms ease";
-            img.style.transform = `perspective(1200px) rotateX(-2deg) rotateY(${rotateY}7deg) scale3d(1.05, 1.05, 1)`;
-        });
-    });
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../helpers.js":"hGI1E"}]},["iqNlW","1SICI"], "1SICI", "parcelRequirec63f")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["iqNlW","1SICI"], "1SICI", "parcelRequirec63f")
 
 //# sourceMappingURL=main.min.18dbc454.js.map

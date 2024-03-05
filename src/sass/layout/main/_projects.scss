@@ -6,6 +6,7 @@
   grid-template-columns: 1fr;
   gap: 7rem;
   @media screen and (min-width: b.$medium) {
+    grid-auto-rows: 1fr;
     gap: 15rem;
     margin-top: 5rem;
   }
