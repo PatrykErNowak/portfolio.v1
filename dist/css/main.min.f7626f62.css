@@ -67,6 +67,13 @@ img {
   font-weight: 500;
 }
 
+@font-face {
+  font-family: Roboto;
+  src: url("../Roboto-Mediumitalic.ca459d25.ttf");
+  font-style: italic;
+  font-weight: 500;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -893,6 +900,106 @@ main:before {
   left: 0;
 }
 
+.quote {
+  color: #ffffffd7;
+  letter-spacing: 1px;
+  text-align: center;
+  font-size: clamp(2.2rem, 1rem + 1.5vw, 3rem);
+  font-style: italic;
+}
+
+.quote [data-type-text="true"] {
+  position: relative;
+}
+
+.quote [data-type-text="true"]:after {
+  content: "|";
+  color: var(--primary-color);
+  font-style: normal;
+  position: absolute;
+}
+
+.quote .icon {
+  color: var(--primary-color);
+  font-size: .3em;
+  transition: opacity .3s ease-in-out;
+}
+
+.quote .icon:first-child {
+  vertical-align: bottom;
+}
+
+.quote .icon:last-child {
+  vertical-align: top;
+}
+
+.about {
+  flex-direction: column;
+  gap: 4rem;
+  display: flex;
+}
+
+@media screen and (width >= 48em) {
+  .about {
+    flex-direction: row;
+    gap: clamp(8rem, 8vw, 15rem);
+  }
+}
+
+.about__info {
+  flex-direction: column;
+  gap: 2em;
+  display: flex;
+}
+
+.about__info p {
+  color: #ffffffd7;
+  line-height: 1.5;
+}
+
+.about__info .goal {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.about__info .strong {
+  color: var(--primary-color);
+}
+
+.about__techs {
+  flex-direction: column;
+  gap: 2em;
+  display: flex;
+}
+
+@media screen and (width >= 48em) {
+  .about__techs {
+    max-width: 90%;
+  }
+}
+
+.about__img-box {
+  display: none;
+}
+
+@media screen and (width >= 48em) {
+  .about__img-box {
+    background-color: #639;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 35rem;
+    max-height: 45rem;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .about__img-box img {
+    object-fit: cover;
+    object-position: 65% center;
+    min-height: 100%;
+  }
+}
+
 .tech {
   grid-template-rows: 1fr;
   grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
@@ -900,6 +1007,12 @@ main:before {
   justify-items: center;
   gap: 2rem;
   display: grid;
+}
+
+@media screen and (width >= 48em) {
+  .tech {
+    gap: 3.5rem 3rem;
+  }
 }
 
 .tech__item {
@@ -951,6 +1064,7 @@ main:before {
 @media screen and (width >= 48em) {
   .projects {
     grid-auto-rows: 1fr;
+    align-items: center;
     gap: 15rem;
     margin-top: 5rem;
   }

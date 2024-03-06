@@ -1,7 +1,96 @@
+@use '../../abstracts/colors' as c;
+@use '../../abstracts/breakpoints' as b;
 @use '../../abstracts/variables' as v;
 
 $tooltip-font-family: 'Kode Mono', monospace;
 $tooltip-font-color: rgba(255, 255, 255, 0.4);
+
+.quote {
+  color: #ffffffd7;
+  font-size: clamp(2.2rem, 1rem + 1.5vw, 3rem);
+  letter-spacing: 1px;
+  text-align: center;
+  font-style: italic;
+
+  [data-type-text='true'] {
+    position: relative;
+    &::after {
+      content: '|';
+      position: absolute;
+      font-style: normal;
+      color: c.$primary-color;
+    }
+  }
+
+  .icon {
+    color: c.$primary-color;
+    font-size: 0.3em;
+    transition: opacity v.$transition-duration v.$transition-function;
+    &:first-child {
+      vertical-align: bottom;
+    }
+    &:last-child {
+      vertical-align: top;
+    }
+  }
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  @media screen and (min-width: b.$medium) {
+    flex-direction: row;
+    gap: clamp(8rem, 8vw, 15rem);
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    p {
+      color: #ffffffd7;
+      line-height: 1.5;
+    }
+
+    .goal {
+      font-weight: 600;
+      color: c.$primary-color;
+    }
+
+    .strong {
+      color: c.$primary-color;
+    }
+  }
+
+  &__techs {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    @media screen and (min-width: b.$medium) {
+      max-width: 90%;
+    }
+  }
+
+  &__img-box {
+    display: none;
+    @media screen and (min-width: b.$medium) {
+      display: inline-block;
+      width: 100%;
+      max-width: 35rem;
+      max-height: 45rem;
+      background-color: rebeccapurple;
+      border-radius: 10px;
+      overflow: hidden;
+
+      img {
+        min-height: 100%;
+        object-fit: cover;
+        object-position: 65% center;
+      }
+    }
+  }
+}
 
 .tech {
   display: grid;
@@ -10,6 +99,10 @@ $tooltip-font-color: rgba(255, 255, 255, 0.4);
   gap: 2rem;
   justify-content: center;
   justify-items: center;
+  @media screen and (min-width: b.$medium) {
+    row-gap: 3.5rem;
+    column-gap: 3rem;
+  }
 
   &__item {
     position: relative;
