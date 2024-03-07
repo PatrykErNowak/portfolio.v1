@@ -1,6 +1,17 @@
 @use '../../abstracts/breakpoints' as b;
 @use '../../abstracts/colors' as c;
 @use '../../abstracts/variables' as v;
+
+$project-name-color: c.$font-color;
+$project-name-font-size: clamp(2.2rem, 1rem + 1.5vw, 3rem);
+$project-name-font-weight: 500;
+
+$tech-tag-color: c.$font-color;
+$tech-tag-font-size: clamp(1rem, 0.5rem + 0.4vw, 1.4rem);
+$tech-tag-bg-color: c.$primary-color;
+
+$project-desc-color: c.$font-color-darker;
+
 .projects {
   display: grid;
   grid-template-columns: 1fr;
@@ -22,6 +33,7 @@
     gap: 12rem;
   }
 
+  // Separate line between projects - only in Mobile view
   &:not(:first-child) {
     position: relative;
     &::before {
@@ -42,10 +54,10 @@
   }
 
   &__info-box {
-    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: start;
+    text-align: center;
     @media screen and (min-width: b.$medium) {
       text-align: start;
     }
@@ -53,10 +65,11 @@
 
   &__name {
     margin-bottom: 0.75em;
-    font-size: clamp(2.2rem, 1rem + 1.5vw, 3rem);
+    color: $project-name-color;
+    font-size: $project-name-font-size;
+    font-weight: $project-name-font-weight;
     text-transform: capitalize;
     letter-spacing: 1px;
-    font-weight: 500;
   }
 
   &__techs {
@@ -73,7 +86,8 @@
     li {
       position: relative;
       padding: 1em 2em;
-      font-size: clamp(1rem, 0.5rem + 0.4vw, 1.4rem);
+      color: $tech-tag-color;
+      font-size: $tech-tag-font-size;
       &::before {
         content: '';
         position: absolute;
@@ -82,7 +96,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: c.$primary-color;
+        background-color: $tech-tag-bg-color;
         border-radius: 500px;
         opacity: 0.25;
       }
@@ -90,10 +104,11 @@
   }
 
   &__desc {
-    line-height: 1.5;
-    color: #ffffff8c;
     margin: 1em 0;
+    color: $project-desc-color;
+    line-height: 1.5;
   }
+
   &__links-box {
     display: flex;
     justify-content: space-evenly;
@@ -131,7 +146,7 @@
         height: 90%;
         border: 2px solid c.$primary-color;
         opacity: 0.3;
-        transition: all 300ms;
+        transition: transform v.$transition-duration v.$transition-function;
       }
 
       img {
@@ -140,7 +155,7 @@
         min-width: 95%;
         max-width: 95%;
         filter: grayscale(100);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
         transition: filter v.$transition-duration v.$transition-function;
       }
 
@@ -157,16 +172,23 @@
 
   // Change order for even projects
   @media screen and (min-width: b.$medium) {
+    --perspective: 1200px;
+    --rotateX: -2deg;
+    --rotateY: 7deg;
+    --scale: 1.05;
+
     transition-property: transform, scale;
     transform-style: preserve-3d;
-    perspective: 1200px;
+    perspective: var(--perspective);
     &:nth-child(even) {
       .project__img-box {
+        // For 3D Effect
+        transform: perspective(var(--perspective)) rotateX(var(--rotateX))
+          rotateY(var(--rotateY)) scale3d(var(--scale), var(--scale), 1);
+
+        // only for static
         order: -1;
         justify-content: end;
-        transform: perspective(1200px) rotateX(-2deg) rotateY(7deg)
-          scale3d(1.05, 1.05, 1);
-
         &::before {
           left: 2%;
           right: unset;
@@ -175,11 +197,14 @@
     }
     &:nth-child(odd) {
       .project__img-box {
+        // For 3D Effect
+        transform: perspective(var(--perspective)) rotateX(var(--rotateX))
+          rotateY(calc(var(--rotateY) * -1))
+          scale3d(var(--scale), var(--scale), 1);
+
+        // only for static
         order: 1;
         justify-content: start;
-        transform: perspective(1200px) rotateX(-2deg) rotateY(-7deg)
-          scale3d(1.05, 1.05, 1);
-
         &::before {
           right: 2%;
           left: unset;

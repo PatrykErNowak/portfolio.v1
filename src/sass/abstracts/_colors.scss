@@ -1,10 +1,15 @@
 :root {
-  --primary-color: #7950f2;
-  --font-color: #fff;
+  --primary-color: hsl(255, 86%, 63%);
+  --font-color-white: #fff;
+  --font-color-darker: #ffffffc5;
+  --font-color-darker-2: #ffffff8c;
 }
 
 $primary-color: var(--primary-color);
 
-$font-color: var(--font-color);
+$font-color: var(--font-color-white);
+$font-color-darker: var(--font-color-darker);
+$font-color-darker-2: var(--font-color-darker-2);
 
 $background-color: #100e17;
+$background-color-second: #171717;

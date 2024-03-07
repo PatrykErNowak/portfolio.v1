@@ -29,6 +29,7 @@
     font-size: 2rem;
     font-size: clamp(2.5rem, 1rem + 1.5vw, 4rem);
     font-family: 'Kode Mono', monospace;
+    color: c.$font-color;
 
     span {
       color: c.$primary-color;
@@ -39,7 +40,6 @@
     letter-spacing: 1px;
     opacity: 0.8;
     line-height: 1.6;
-    // text-align: center;
     font-weight: 400;
   }
 

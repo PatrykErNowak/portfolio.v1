@@ -1,11 +1,11 @@
 @use '../abstracts/colors' as c;
 @use '../abstracts/variables' as v;
 
-$footer-background-color: #212529;
-$text-color: #868e96;
+$footer-background-color: c.$background-color-second;
+$text-color: #ffffff46;
 
 $social-main-bgc: c.$primary-color;
-$social-hover-bgc: #9775fa;
+$social-hover-bgc: hsl(255, 93%, 72%);
 
 .footer {
   position: relative;

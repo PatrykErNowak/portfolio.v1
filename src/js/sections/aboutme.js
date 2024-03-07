@@ -47,7 +47,7 @@ export const animateMotto = function () {
     }
   };
 
-  const options = { rootMargin: '0px', threshold: 0.75 };
+  const options = { rootMargin: '0px', threshold: 0.5 };
 
   const observer = new IntersectionObserver(controlAnimation, options);
   observer.observe(aboutmeSection);

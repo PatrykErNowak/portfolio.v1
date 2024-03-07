@@ -2,16 +2,23 @@
 @use '../../abstracts/breakpoints' as b;
 @use '../../abstracts/variables' as v;
 
-$tooltip-font-family: 'Kode Mono', monospace;
-$tooltip-font-color: rgba(255, 255, 255, 0.4);
+$motto-color: c.$font-color-darker;
+$motto-font-size: clamp(2.2rem, 1rem + 1.5vw, 3rem);
 
-.quote {
-  color: #ffffffd7;
-  font-size: clamp(2.2rem, 1rem + 1.5vw, 3rem);
+$tech-tooltip-font-family: 'Kode Mono', monospace;
+$tech-tooltip-font-color: c.$font-color-darker-2;
+$tech-tooltip-font-size: clamp(1rem, 0.5rem + 0.4vw, 1.2rem);
+
+$desc-color: c.$font-color-darker;
+
+.motto {
+  color: $motto-color;
+  font-size: $motto-font-size;
   letter-spacing: 1px;
   text-align: center;
   font-style: italic;
 
+  // IF animation text typing is active
   [data-type-text='true'] {
     position: relative;
     &::after {
@@ -43,27 +50,24 @@ $tooltip-font-color: rgba(255, 255, 255, 0.4);
     flex-direction: row;
     gap: clamp(8rem, 8vw, 15rem);
   }
-  &__info {
+  &__info-box {
     display: flex;
     flex-direction: column;
     gap: 2em;
 
     p {
-      color: #ffffffd7;
+      color: $desc-color;
       line-height: 1.5;
     }
 
-    .goal {
-      font-weight: 600;
-      color: c.$primary-color;
-    }
-
     .strong {
+      font-weight: 600;
       color: c.$primary-color;
     }
   }
 
   &__techs {
+    // Styling for tech items is in the sheet bottom
     display: flex;
     flex-direction: column;
     gap: 2em;
@@ -75,18 +79,28 @@ $tooltip-font-color: rgba(255, 255, 255, 0.4);
   &__img-box {
     display: none;
     @media screen and (min-width: b.$medium) {
+      position: relative;
       display: inline-block;
       width: 100%;
       max-width: 35rem;
-      max-height: 45rem;
-      background-color: rebeccapurple;
-      border-radius: 10px;
+      max-height: 50rem;
+      border-radius: v.$border-radious;
+      box-shadow: 0 0 15px 0px rgba(255, 255, 255, 0.1);
+      transition: box-shadow v.$transition-duration v.$transition-function;
       overflow: hidden;
+
+      &:hover {
+        box-shadow: 0 0 25px 0px rgba(255, 255, 255, 0.15);
+        img {
+          transform: scale(1.1);
+        }
+      }
 
       img {
         min-height: 100%;
         object-fit: cover;
-        object-position: 65% center;
+        object-position: center;
+        transition: transform v.$transition-duration v.$transition-function;
       }
     }
   }
@@ -94,7 +108,7 @@ $tooltip-font-color: rgba(255, 255, 255, 0.4);
 
 .tech {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(5.5rem, 1fr));
   grid-template-rows: 1fr;
   gap: 2rem;
   justify-content: center;
@@ -126,9 +140,9 @@ $tooltip-font-color: rgba(255, 255, 255, 0.4);
       top: 110%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0);
-      color: $tooltip-font-color;
-      font-family: $tooltip-font-family;
-      font-size: clamp(1rem, 0.5rem + 0.4vw, 1.2rem);
+      color: $tech-tooltip-font-color;
+      font-family: $tech-tooltip-font-family;
+      font-size: $tech-tooltip-font-size;
       opacity: 0;
       transition:
         opacity v.$transition-duration v.$transition-function,

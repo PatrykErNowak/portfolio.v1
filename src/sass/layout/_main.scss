@@ -8,8 +8,8 @@ main {
   padding: 5vw 0;
   background-image: linear-gradient(
     to top,
-    rgba(#100e17, 1) 97%,
-    rgba(#100e17, 0.5) 100%
+    rgba(c.$background-color, 1) 97%,
+    rgba(c.$background-color, 0.5) 100%
   );
 
   &::before {

@@ -2,16 +2,16 @@
 @use '../../abstracts/colors' as c;
 @use '../../abstracts/variables' as v;
 
-$background-color: #171717;
+$background-color: c.$background-color-second;
 
 $title-font-size: clamp(2.1rem, 1rem + 1.5vw, 3rem);
 $link-font-size: clamp(1.2rem, 0.6rem + 0.6vw, 1.6rem);
 
 $form-label-font-size: clamp(1.3rem, 0.7rem + 1vw, 1.6rem);
 $form-input-font-size: $form-label-font-size;
-$form-label-color: rgba(255, 255, 255, 0.7);
-$form-input-color: rgba(255, 255, 255, 0.8);
-$form-border-color: rgba(255, 255, 255, 0.3);
+$form-label-color: c.$font-color-darker;
+$form-input-color: $form-label-color;
+$form-border-color: #ffffff4d;
 
 $form-message-title-font-size: clamp(3.4rem, 1.5rem + 2vw, 5.5rem);
 $form-error-font-color: #e03131;

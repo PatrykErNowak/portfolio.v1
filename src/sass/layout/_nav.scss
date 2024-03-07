@@ -3,7 +3,7 @@
 @use '../abstracts/variables' as v;
 
 $nav-border-radious: v.$border-radious;
-$nav-background-color: rgba(15, 15, 15, 0.9);
+$nav-mobile-background-color: rgba(15, 15, 15, 0.5);
 $nav-hamburger-bg: rgba(0, 0, 0, 0.2);
 
 $nav-font-family: 'Roboto', sans-serif;
@@ -11,6 +11,8 @@ $nav-font-family-span: 'Kode Mono', monospace;
 $nav-font-color: c.$font-color;
 $nav-font-weight: 400;
 $nav-font-size: 14px;
+
+$nav-span-color: c.$font-color-darker-2;
 
 .nav {
   position: fixed;
@@ -37,8 +39,7 @@ $nav-font-size: 14px;
     flex-direction: column;
     gap: 1.5em;
     padding: 1.5em 1em;
-    backdrop-filter: blur(6px);
-    background-color: $nav-background-color;
+    background-color: $nav-mobile-background-color;
     border-radius: $nav-border-radious;
     opacity: 0;
     transform: translateY(25%);
@@ -50,6 +51,7 @@ $nav-font-size: 14px;
     &.active {
       opacity: 1;
       pointer-events: all;
+      backdrop-filter: blur(6px);
       transform: translateY(0);
     }
 
@@ -93,7 +95,7 @@ $nav-font-size: 14px;
 
     span {
       margin-bottom: 0.1em;
-      color: #ffffff8c;
+      color: $nav-span-color;
       font-size: 0.8em;
       font-family: $nav-font-family-span;
       transition: color v.$transition-duration v.$transition-function;
