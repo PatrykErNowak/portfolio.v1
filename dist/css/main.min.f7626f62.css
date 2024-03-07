@@ -115,6 +115,14 @@ p {
   margin: 0 auto;
 }
 
+.scroll-margin {
+  scroll-margin: 3rem;
+}
+
+.scroll-margin-large {
+  scroll-margin: 25rem;
+}
+
 .hamburger {
   cursor: pointer;
   font: inherit;
@@ -528,6 +536,7 @@ p {
   border-radius: 10px;
   flex-direction: column;
   gap: 1.5em;
+  margin-right: 1.5rem;
   padding: 1.5em 1em;
   transition: opacity .5s, transform 1.2s;
   display: flex;
