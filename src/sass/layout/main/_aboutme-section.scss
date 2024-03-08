@@ -83,11 +83,12 @@ $desc-color: c.$font-color-darker;
       display: inline-block;
       width: 100%;
       max-width: 35rem;
-      max-height: 50rem;
-      border-radius: v.$border-radious;
+      aspect-ratio: 1/1;
+      max-height: 35rem;
       box-shadow: 0 0 15px 0px rgba(255, 255, 255, 0.1);
-      transition: box-shadow v.$transition-duration v.$transition-function;
       overflow: hidden;
+      transition: box-shadow v.$transition-duration v.$transition-function;
+      animation: morph-photo 15s linear infinite backwards;
 
       &:hover {
         box-shadow: 0 0 25px 0px rgba(255, 255, 255, 0.15);
@@ -103,6 +104,23 @@ $desc-color: c.$font-color-darker;
         transition: transform v.$transition-duration v.$transition-function;
       }
     }
+  }
+}
+@keyframes morph-photo {
+  0% {
+    border-radius: 60% 40% 50% 50% / 60% 50% 50% 40%;
+  }
+  25% {
+    border-radius: 49% 51% 65% 35% / 40% 60% 40% 60%;
+  }
+  50% {
+    border-radius: 50% 50% 60% 40% / 50% 40% 60% 50%;
+  }
+  75% {
+    border-radius: 65% 35% 49% 51% / 40% 60% 40% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 50% 50% / 60% 50% 50% 40%;
   }
 }
 

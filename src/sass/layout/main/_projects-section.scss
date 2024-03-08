@@ -18,7 +18,6 @@ $project-desc-color: c.$font-color-darker;
   gap: 7rem;
   @media screen and (min-width: b.$medium) {
     grid-auto-rows: 1fr;
-    align-items: center;
     gap: 15rem;
     margin-top: 5rem;
   }
@@ -30,6 +29,7 @@ $project-desc-color: c.$font-color-darker;
   @media screen and (min-width: b.$medium) {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
     gap: 12rem;
   }
 
