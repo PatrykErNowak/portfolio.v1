@@ -104,7 +104,8 @@ $nav-span-color: c.$font-color-darker-2;
     }
 
     &:hover,
-    &:focus-within {
+    &:focus-within,
+    &.active {
       span {
         color: c.$primary-color;
       }

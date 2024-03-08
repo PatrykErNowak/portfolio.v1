@@ -515,11 +515,11 @@ p {
   transition: color .3s ease-in-out;
 }
 
-.nav__link:hover span, .nav__link:focus-within span {
+.nav__link:hover span, .nav__link:focus-within span, .nav__link.active span {
   color: var(--primary-color);
 }
 
-.nav__link:hover:before, .nav__link:focus-within:before {
+.nav__link:hover:before, .nav__link:focus-within:before, .nav__link.active:before {
   opacity: .6;
 }
 

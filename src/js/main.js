@@ -7,6 +7,7 @@ import * as footer from './sections/footer.js';
 
 const init = function () {
   nav.mobileBtnHandler();
+  nav.handleScrollSpy();
   header.controlHeaderAnimation();
   aboutme.animateMotto();
   projects.handl3DImgAnimation();
