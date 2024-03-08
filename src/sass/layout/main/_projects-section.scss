@@ -182,6 +182,7 @@ $project-desc-color: c.$font-color-darker;
     perspective: var(--perspective);
     &:nth-child(even) {
       .project__img-box {
+        margin-left: 2.5rem;
         // For 3D Effect
         transform: perspective(var(--perspective)) rotateX(var(--rotateX))
           rotateY(var(--rotateY)) scale3d(var(--scale), var(--scale), 1);
@@ -197,6 +198,7 @@ $project-desc-color: c.$font-color-darker;
     }
     &:nth-child(odd) {
       .project__img-box {
+        margin-right: 2.5rem;
         // For 3D Effect
         transform: perspective(var(--perspective)) rotateX(var(--rotateX))
           rotateY(calc(var(--rotateY) * -1))

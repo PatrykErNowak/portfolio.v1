@@ -17,6 +17,7 @@ html {
 
 body {
   background-color: #100e17;
+  overflow-x: clip;
 }
 
 ul, ol {
@@ -447,7 +448,7 @@ p {
   z-index: 500;
   opacity: 0;
   pointer-events: none;
-  background-color: #0f0f0f80;
+  background-color: #0f0f0f99;
   border-radius: 10px;
   flex-direction: column;
   gap: 1.5em;
@@ -535,8 +536,8 @@ li:has(.nav__btn-resume) {
 .nav__btn-hamburger-box {
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
-  background-color: #ffffff08;
-  border: 1px solid #ffffff0d;
+  background-color: #0000004d;
+  border: 1px solid #ffffff26;
   border-radius: 10px;
   width: 4.5rem;
   height: 4.5rem;
@@ -677,7 +678,7 @@ li:has(.nav__btn-resume) {
 
 .header__heading .text-stroke-mobile {
   color: #0000;
-  text-shadow: 0 0 1px #141414, 0 0 2px var(--font-color-white), 0 0 3px var(--primary-color);
+  text-shadow: 0 0 1px #0a0a0a, 0 0 2px var(--primary-color), 0 0 4px var(--primary-color);
   font-size: clamp(5rem, 4rem + 8vw, 20rem);
 }
 
@@ -1203,6 +1204,7 @@ main:before {
     transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(var(--rotateY)) scale3d(var(--scale), var(--scale), 1);
     order: -1;
     justify-content: end;
+    margin-left: 2.5rem;
   }
 
   .project:nth-child(2n) .project__img-box:before {
@@ -1214,6 +1216,7 @@ main:before {
     transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(calc(var(--rotateY) * -1)) scale3d(var(--scale), var(--scale), 1);
     order: 1;
     justify-content: start;
+    margin-right: 2.5rem;
   }
 
   .project:nth-child(odd) .project__img-box:before {

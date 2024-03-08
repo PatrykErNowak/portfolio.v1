@@ -3,8 +3,9 @@
 @use '../abstracts/variables' as v;
 
 $nav-border-radious: v.$border-radious;
-$nav-mobile-background-color: rgba(15, 15, 15, 0.5);
-$nav-hamburger-bg: rgba(0, 0, 0, 0.2);
+$nav-mobile-background-color: rgba(15, 15, 15, 0.6);
+$nav-hamburger-bg: rgba(0, 0, 0, 0.3);
+$nav-hamburger-border: 1px solid rgba(255, 255, 255, 0.15);
 
 $nav-font-family: 'Roboto', sans-serif;
 $nav-font-family-span: 'Kode Mono', monospace;
@@ -125,9 +126,9 @@ $nav-span-color: c.$font-color-darker-2;
   &__btn-hamburger-box {
     width: 4.5rem;
     height: 4.5rem;
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: $nav-hamburger-bg;
     border-radius: $nav-border-radious;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: $nav-hamburger-border;
     backdrop-filter: blur(6px);
     @media screen and (min-width: b.$medium) {
       display: none;

@@ -112,9 +112,9 @@ $transition-function: linear;
       font-size: clamp(5rem, 4rem + 8vw, 20rem);
       color: transparent;
       text-shadow:
-        0 0 1px rgba(20, 20, 20, 1),
-        0 0 2px c.$font-color,
-        0 0 3px c.$primary-color;
+        0 0 1px rgba(10, 10, 10, 1),
+        0 0 2px c.$primary-color,
+        0 0 4px c.$primary-color;
       @media screen and (min-width: b.$medium) {
         display: none;
       }
