@@ -438,6 +438,17 @@ p {
   position: fixed;
 }
 
+.nav--bgc:before {
+  content: "";
+  opacity: .9;
+  background-color: #100e17;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 @media screen and (width >= 48em) {
   .nav {
     padding: 1rem 2rem;
@@ -618,6 +629,7 @@ li:has(.nav__btn-resume) {
   height: 90%;
   position: absolute;
   bottom: 0;
+  left: 0;
 }
 
 @media screen and (width >= 48em) {
@@ -809,7 +821,7 @@ li:has(.nav__btn-resume) {
 
 main {
   z-index: 0;
-  background-image: linear-gradient(to top, #100e17 97%, #100e1780 100%);
+  background-image: linear-gradient(#100e171a 5px, #100e1780 35px, #100e17 70px);
   min-height: 100vh;
   padding: 5vw 0;
   position: relative;

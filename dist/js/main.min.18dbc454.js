@@ -587,6 +587,7 @@ var _contactmeJs = require("./sections/contactme.js");
 var _footerJs = require("./sections/footer.js");
 const init = function() {
     _navJs.mobileBtnHandler();
+    _navJs.handleNavbarBackground();
     _navJs.handleScrollSpy();
     _headerJs.controlHeaderAnimation();
     _aboutmeJs.animateMotto();
@@ -601,12 +602,16 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "mobileBtnHandler", ()=>mobileBtnHandler);
 parcelHelpers.export(exports, "handleScrollSpy", ()=>handleScrollSpy);
+parcelHelpers.export(exports, "handleNavbarBackground", ()=>handleNavbarBackground);
 var _helpersJs = require("../helpers.js");
 // --------- NAVIGATION
 // Elements
+const nav = document.querySelector('[data-js="nav"]');
 const mobileBtn = document.querySelector('[data-js="nav-mobile-btn"]');
 const navlist = document.querySelector('[data-js="nav-list"]');
 const navLinks = document.querySelectorAll('[data-js="nav-link"]');
+// Elements outside of nav
+const header = document.querySelector('[data-js="header"]');
 const sections = document.querySelectorAll('[data-spy="section"]');
 // -------------------------------------------------------------------
 const toggleMobileNav = function() {
@@ -652,8 +657,29 @@ const handleScrollSpy = function() {
     const spyObserver = new IntersectionObserver(handleActiveSection, options);
     sections.forEach((section)=>spyObserver.observe(section));
 };
+const handleNavbarBackground = function() {
+    if (window.window.innerWidth >= 2400) return;
+    const handleBackground = function(entries) {
+        const { isIntersecting } = entries[0];
+        if (!isIntersecting) nav.classList.add("nav--bgc");
+        if (isIntersecting) nav.classList.remove("nav--bgc");
+    };
+    const options = {
+        threshold: 0
+    };
+    const mainObserver = new IntersectionObserver(handleBackground, options);
+    mainObserver.observe(header);
+};
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../helpers.js":"hGI1E"}],"gkKU3":[function(require,module,exports) {
+},{"../helpers.js":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hGI1E":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "isMobileView", ()=>isMobileView);
+const isMobileView = function() {
+    return window.navigator.userAgentData?.mobile || window.matchMedia("(max-width: 768px)").matches;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -683,15 +709,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"hGI1E":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "isMobileView", ()=>isMobileView);
-const isMobileView = function() {
-    return window.navigator.userAgentData?.mobile || window.matchMedia("(max-width: 768px)").matches;
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6echj":[function(require,module,exports) {
+},{}],"6echj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "controlHeaderAnimation", ()=>controlHeaderAnimation);

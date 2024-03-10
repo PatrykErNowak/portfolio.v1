@@ -11,6 +11,12 @@ main {
     rgba(c.$background-color, 1) 97%,
     rgba(c.$background-color, 0.5) 100%
   );
+  background-image: linear-gradient(
+    to bottom,
+    rgba(c.$background-color, 0.1) 5px,
+    rgba(c.$background-color, 0.5) 35px,
+    rgba(c.$background-color, 1) 70px
+  );
 
   &::before {
     content: '';

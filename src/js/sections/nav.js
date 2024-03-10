@@ -2,9 +2,13 @@ import { isMobileView } from '../helpers.js';
 
 // --------- NAVIGATION
 // Elements
+const nav = document.querySelector('[data-js="nav"]');
 const mobileBtn = document.querySelector('[data-js="nav-mobile-btn"]');
 const navlist = document.querySelector('[data-js="nav-list"]');
 const navLinks = document.querySelectorAll('[data-js="nav-link"]');
+
+// Elements outside of nav
+const header = document.querySelector('[data-js="header"]');
 const sections = document.querySelectorAll('[data-spy="section"]');
 
 // -------------------------------------------------------------------
@@ -64,4 +68,21 @@ export const handleScrollSpy = function () {
 
   const spyObserver = new IntersectionObserver(handleActiveSection, options);
   sections.forEach((section) => spyObserver.observe(section));
+};
+
+export const handleNavbarBackground = function () {
+  if (window.window.innerWidth >= 2400) return;
+
+  const handleBackground = function (entries) {
+    const { isIntersecting } = entries[0];
+
+    if (!isIntersecting) nav.classList.add('nav--bgc');
+    if (isIntersecting) nav.classList.remove('nav--bgc');
+  };
+
+  const options = {
+    threshold: 0,
+  };
+  const mainObserver = new IntersectionObserver(handleBackground, options);
+  mainObserver.observe(header);
 };
