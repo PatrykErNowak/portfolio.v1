@@ -46,6 +46,11 @@
     <link rel="stylesheet" href="./sass/main.scss" />
     <!-- JS -->
     <script type="module" src="./js/main.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-680S0DW230"
+    ></script>
   </head>
 
   <body>
@@ -612,5 +617,14 @@
         Patryk Nowak.
       </p>
     </footer>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-680S0DW230');
+    </script>
   </body>
 </html>
