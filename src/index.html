@@ -4,53 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PENDEV - Frontend Developer</title>
-    <meta
-      name="description"
-      content="Hi, I'm Patrick, a Frontend Developer from Poland and here is my portfolio website."
-    />
-    <meta
-      name="keywords"
-      content="Data Analyst, Power BI, BI Developer, Dashboard "
-    />
+    <meta name="description" content="Hi, I'm Patrick, a Frontend Developer from Poland and here is my portfolio website." />
+    <meta name="keywords" content="Data Analyst, Power BI, BI Developer, Dashboard " />
     <meta name="image" content="https://www.pendev.me/img/portfolio.jpg" />
     <meta name="author" content="Patryk Nowak(PenDev)" />
     <meta name="og:title" content="PENDEV - Frontend Developer" />
-    <meta
-      name="og:description"
-      content="Hi, I'm Patrick, a Frontend Developer from Poland and here is my portfolio website."
-    />
+    <meta name="og:description" content="Hi, I'm Patrick, a Frontend Developer from Poland and here is my portfolio website." />
     <meta name="og:image" content="https://www.pendev.me/img/portfolio.jpg" />
 
-    <link
-      rel="icon"
-      sizes="32x32"
-      type="image/x-icon"
-      href="./img/favicon.svg"
-    />
-    <link
-      rel="preload"
-      fetchpriority="high"
-      as="image"
-      href="./img/header/my photo.jpg"
-      type="image/jpeg"
-    />
+    <link rel="icon" sizes="32x32" type="image/x-icon" href="./img/favicon.svg" />
+    <link rel="preload" fetchpriority="high" as="image" href="./img/header/my photo.jpg" type="image/jpeg" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Kdam+Thmor+Pro&family=Kode+Mono:wght@400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <!-- CSS -->
     <link rel="stylesheet" href="./sass/main.scss" />
     <!-- JS -->
     <script type="module" src="./js/main.js"></script>
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-680S0DW230"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-680S0DW230"></script>
   </head>
 
   <body>
@@ -63,25 +39,16 @@
       </a>
       <ul class="nav__list" id="navigation" data-js="nav-list">
         <li>
-          <a href="#about" class="nav__link" data-js="nav-link"
-            ><span>01</span>About me</a
-          >
+          <a href="#about" class="nav__link" data-js="nav-link"><span>01</span>About me</a>
         </li>
         <li>
-          <a href="#myworks" class="nav__link" data-js="nav-link"
-            ><span>02</span>Projects</a
-          >
+          <a href="#myworks" class="nav__link" data-js="nav-link"><span>02</span>Projects</a>
         </li>
         <li>
-          <a href="#contact" class="nav__link" data-js="nav-link"
-            ><span>03</span>Contact me</a
-          >
+          <a href="#contact" class="nav__link" data-js="nav-link"><span>03</span>Contact me</a>
         </li>
         <li>
-          <a
-            href="./assets/Patryk Ernest Nowak.pdf"
-            target="_blank"
-            class="nav__btn-resume btn--primary"
+          <a href="./assets/Patryk Ernest Nowak.pdf" target="_blank" class="nav__btn-resume btn--primary"
             >View Resume
             <svg class="icon">
               <use xlink:href="./img/icons/sprite.svg#icon-briefcase"></use>
@@ -96,8 +63,7 @@
           aria-label="Menu"
           aria-controls="navigation"
           aria-expanded="false"
-          data-js="nav-mobile-btn"
-        >
+          data-js="nav-mobile-btn">
           <span class="hamburger-box">
             <span class="hamburger-inner"></span>
           </span>
@@ -111,13 +77,7 @@
         <h1 class="header__heading">
           <span data-js="header-heading-top">hey, i&nbsp;am</span>
           <span class="text-stroke-mobile">pendev<span>.</span></span>
-          <svg
-            class="text-stroke-desktop"
-            viewBox="0 0 430 100"
-            width="100%"
-            height="100%"
-            data-js="header-heading-bottom"
-          >
+          <svg class="text-stroke-desktop" viewBox="0 0 430 100" width="100%" height="100%" data-js="header-heading-bottom">
             <text class="text" x="0" y="75">PENDEV</text>
           </svg>
         </h1>
@@ -138,67 +98,42 @@
       <section class="section wrapper-12" aria-label="My motto">
         <p class="motto">
           <svg class="icon" aria-hidden="true" data-js="my-motto__quote">
-            <use
-              xlink:href="./img/icons/sprite.svg#icon-quotes-left"
-            ></use></svg
-          >&nbsp;<span data-type-text="false" data-js="my-motto"
-            >Nothing is impossible, it all depends on how much time you have to
-            spend on it</span
-          >&nbsp;<svg class="icon" aria-hidden="true" data-js="my-motto__quote">
+            <use xlink:href="./img/icons/sprite.svg#icon-quotes-left"></use></svg
+          >&nbsp;<span data-type-text="false" data-js="my-motto">Nothing is impossible, it all depends on how much time you have to spend on it</span>&nbsp;<svg
+            class="icon"
+            aria-hidden="true"
+            data-js="my-motto__quote">
             <use xlink:href="./img/icons/sprite.svg#icon-quotes-right"></use>
           </svg>
         </p>
       </section>
-      <section
-        id="about"
-        class="section--left wrapper-14 scroll-margin-large"
-        aria-label="About me"
-        data-js="aboutme"
-        data-spy="section"
-      >
-        <h2 class="section__title">
-          <span>&lt;</span>About me<span>&#47;&gt;</span>
-        </h2>
+      <section id="about" class="section--left wrapper-14 scroll-margin-large" aria-label="About me" data-js="aboutme" data-spy="section">
+        <h2 class="section__title"><span>&lt;</span>About me<span>&#47;&gt;</span></h2>
         <div class="section__content">
           <div class="about">
             <div class="about__info-box">
               <p>
-                Hi, I am a self-taught programmer who was interested in
-                technology and computers from a young age. Due to turmoil in my
-                personal life, I stopped programming and studying computer
-                science. I have successfully returned to programming for the
-                past 2 years and am constantly expanding my skills -
-                <strong class="strong"
-                  >my goal is to become a real specialist in Frontend
-                  Development</strong
-                >.
+                Hi, I am a self-taught programmer who was interested in technology and computers from a young age. Due to turmoil in my personal life, I stopped
+                programming and studying computer science. I have successfully returned to programming for the past 2 years and am constantly expanding my
+                skills -
+                <strong class="strong">my goal is to become a real specialist in Frontend Development</strong>.
               </p>
-              <p>
-                I am a persistent and patient person who never give up until
-                resolve the problem, in line with my motto.
-              </p>
+              <p>I am a persistent and patient person who never give up until resolve the problem, in line with my motto.</p>
 
               <p>
                 When creating websites and applications, I focus on
-                <strong class="strong">RWD (Responsive Web Design)</strong>,
-                semantic <strong class="strong">HTML</strong>,
-                <strong class="strong">accessibility</strong> and
-                <strong class="strong">performance</strong>, without omission
-                aesthetics and good looking design.
+                <strong class="strong">RWD (Responsive Web Design)</strong>, semantic <strong class="strong">HTML</strong>,
+                <strong class="strong">accessibility</strong> and <strong class="strong">performance</strong>, without omission aesthetics and good looking
+                design.
               </p>
               <div class="about__techs">
-                <p>
-                  Here you can find technologies and skills I am using to work
-                  with:
-                </p>
+                <p>Here you can find technologies and skills I am using to work with:</p>
                 <ul class="tech">
                   <li class="tech__item">
                     <a href="https://www.w3.org/html/">
                       <span class="tooltip">HTML</span>
                       <svg class="icon">
-                        <use
-                          xlink:href="./img/icons/sprite.svg#icon-html5"
-                        ></use>
+                        <use xlink:href="./img/icons/sprite.svg#icon-html5"></use>
                       </svg>
                     </a>
                   </li>
@@ -206,16 +141,12 @@
                     <a href="https://www.w3.org/Style/CSS/">
                       <span class="tooltip">CSS</span>
                       <svg class="icon">
-                        <use
-                          xlink:href="./img/icons/sprite.svg#icon-css3"
-                        ></use>
+                        <use xlink:href="./img/icons/sprite.svg#icon-css3"></use>
                       </svg>
                     </a>
                   </li>
                   <li class="tech__item">
-                    <a
-                      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-                    >
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
                       <span class="tooltip">JavaScript</span>
                       <svg class="icon">
                         <use xlink:href="./img/icons/sprite.svg#icon-js"></use>
@@ -223,12 +154,18 @@
                     </a>
                   </li>
                   <li class="tech__item">
+                    <a href="https://www.typescriptlang.org">
+                      <span class="tooltip">TypeScript</span>
+                      <svg class="icon">
+                        <use xlink:href="./img/icons/sprite.svg#icon-typescript"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="tech__item">
                     <a href="https://sass-lang.com">
                       <span class="tooltip">SASS</span>
                       <svg class="icon">
-                        <use
-                          xlink:href="./img/icons/sprite.svg#icon-sass"
-                        ></use>
+                        <use xlink:href="./img/icons/sprite.svg#icon-sass"></use>
                       </svg>
                     </a>
                   </li>
@@ -236,9 +173,7 @@
                     <a href="https://tailwindcss.com">
                       <span class="tooltip">TailwindCSS</span>
                       <svg class="icon">
-                        <use
-                          xlink:href="./img/icons/sprite.svg#icon-tailwindcss"
-                        ></use>
+                        <use xlink:href="./img/icons/sprite.svg#icon-tailwindcss"></use>
                       </svg>
                     </a>
                   </li>
@@ -246,9 +181,7 @@
                     <a href="https://gulpjs.com">
                       <span class="tooltip">Gulp.js</span>
                       <svg class="icon">
-                        <use
-                          xlink:href="./img/icons/sprite.svg#icon-gulp"
-                        ></use>
+                        <use xlink:href="./img/icons/sprite.svg#icon-gulp"></use>
                       </svg>
                     </a>
                   </li>
@@ -278,9 +211,7 @@
                     <a href="https://www.mysql.com">
                       <span class="tooltip">MySQL</span>
                       <svg class="icon">
-                        <use
-                          xlink:href="./img/icons/sprite.svg#icon-mysql"
-                        ></use>
+                        <use xlink:href="./img/icons/sprite.svg#icon-mysql"></use>
                       </svg>
                     </a>
                   </li>
@@ -288,9 +219,7 @@
                     <a href="https://www.postman.com">
                       <span class="tooltip">Postman</span>
                       <svg class="icon">
-                        <use
-                          xlink:href="./img/icons/sprite.svg#icon-postman"
-                        ></use>
+                        <use xlink:href="./img/icons/sprite.svg#icon-postman"></use>
                       </svg>
                     </a>
                   </li>
@@ -304,15 +233,8 @@
         </div>
       </section>
 
-      <section
-        id="myworks"
-        class="section--left wrapper-14 scroll-margin"
-        aria-label="My works"
-        data-spy="section"
-      >
-        <h2 class="section__title">
-          <span>&lt;</span>Projects<span>&#47;&gt;</span>
-        </h2>
+      <section id="myworks" class="section--left wrapper-14 scroll-margin" aria-label="My works" data-spy="section">
+        <h2 class="section__title"><span>&lt;</span>Projects<span>&#47;&gt;</span></h2>
         <div class="section__content">
           <div class="projects">
             <div class="project">
@@ -327,21 +249,15 @@
                   <li>A11Y</li>
                 </ul>
                 <p class="project__desc">
-                  Business website for a local e-cigarette store. My first
-                  commercial project entirely designed and implemented by myself
-                  with full hosting configuration. In implementation, I focused
-                  on improving accessibility and performance. I used external
-                  libraries such as 'Swiper.js' and build it with Gulp.js
+                  Business website for a local e-cigarette store. My first commercial project entirely designed and implemented by myself with full hosting
+                  configuration. In implementation, I focused on improving accessibility and performance. I used external libraries such as 'Swiper.js' and
+                  build it with Gulp.js
                 </p>
                 <div class="project__links-box">
-                  <a
-                    href="https://tenvape.pl"
-                    class="project__link btn--secondary"
+                  <a href="https://tenvape.pl" class="project__link btn--secondary"
                     >View Project
                     <svg class="icon">
-                      <use
-                        xlink:href="./img/icons/sprite.svg#icon-external-link"
-                      ></use>
+                      <use xlink:href="./img/icons/sprite.svg#icon-external-link"></use>
                     </svg>
                   </a>
                 </div>
@@ -356,6 +272,7 @@
                 <h3 class="project__name">M-Data</h3>
                 <ul class="project__techs">
                   <li>HTML/CSS/JS</li>
+                  <li>TypeScript</li>
                   <li>SCSS</li>
                   <li>BEM</li>
                   <li>Parcel.js</li>
@@ -365,32 +282,21 @@
                   <li>A11Y</li>
                 </ul>
                 <p class="project__desc">
-                  Individual project - Single Page Portfolio dedicated to Data
-                  Analyst. The main objective was to present the analyst's
-                  biography, skills and Power BI reports. My wholly designed and
-                  developed site was implemented with Object-Oriented
-                  Programming approach and Model-View-Controller Pattern. To
-                  build it, I used Parcel.js.
+                  Individual project - Single Page Portfolio dedicated to Data Analyst. The main objective was to present the analyst's biography, skills and
+                  Power BI reports. My wholly designed and developed site was implemented with Object-Oriented Programming approach and Model-View-Controller
+                  Pattern. To build it, I used Parcel.js.
                 </p>
                 <div class="project__links-box">
-                  <a
-                    href="https://github.com/PatrykErNowak/M-Olech-Portfolio-App"
-                    class="project__link btn--primary"
+                  <a href="https://github.com/PatrykErNowak/M-Olech-Portfolio-App" class="project__link btn--primary"
                     >View GitHub
                     <svg class="icon">
-                      <use
-                        xlink:href="./img/icons/sprite.svg#icon-github"
-                      ></use>
+                      <use xlink:href="./img/icons/sprite.svg#icon-github"></use>
                     </svg>
                   </a>
-                  <a
-                    href="https://www.m-data.me"
-                    class="project__link btn--secondary"
+                  <a href="https://www.m-data.me" class="project__link btn--secondary"
                     >View Project
                     <svg class="icon">
-                      <use
-                        xlink:href="./img/icons/sprite.svg#icon-external-link"
-                      ></use>
+                      <use xlink:href="./img/icons/sprite.svg#icon-external-link"></use>
                     </svg>
                   </a>
                 </div>
@@ -414,61 +320,36 @@
                   <li>A11Y</li>
                 </ul>
                 <p class="project__desc">
-                  Here you can find a showcase of my front-end skills. This
-                  collection features my solutions to various Frontend Mentor
-                  challenges, each providing a real-life workflow experience.
-                  From designs, assets, and style requirements, I have honed my
-                  skills in building responsive and visually appealing websites.
-                  Explore my solutions and see the live demos.
+                  Here you can find a showcase of my front-end skills. This collection features my solutions to various Frontend Mentor challenges, each
+                  providing a real-life workflow experience. From designs, assets, and style requirements, I have honed my skills in building responsive and
+                  visually appealing websites. Explore my solutions and see the live demos.
                 </p>
                 <div class="project__links-box">
-                  <a
-                    href="https://github.com/PatrykErNowak/Frontend-Mentor-Challenges/"
-                    class="project__link btn--primary"
+                  <a href="https://github.com/PatrykErNowak/Frontend-Mentor-Challenges/" class="project__link btn--primary"
                     >View GitHub
                     <svg class="icon">
-                      <use
-                        xlink:href="./img/icons/sprite.svg#icon-github"
-                      ></use>
+                      <use xlink:href="./img/icons/sprite.svg#icon-github"></use>
                     </svg>
                   </a>
-                  <a
-                    href="https://patrykernowak.github.io/Frontend-Mentor-Challenges/Main%20page/dist/"
-                    class="project__link btn--secondary"
+                  <a href="https://patrykernowak.github.io/Frontend-Mentor-Challenges/Main%20page/dist/" class="project__link btn--secondary"
                     >View Project
                     <svg class="icon">
-                      <use
-                        xlink:href="./img/icons/sprite.svg#icon-external-link"
-                      ></use>
+                      <use xlink:href="./img/icons/sprite.svg#icon-external-link"></use>
                     </svg>
                   </a>
                 </div>
               </div>
               <div class="project__img-box" data-js="img3D">
-                <img
-                  src="./img/projects/frontendmentor.jpg"
-                  alt=""
-                  loading="lazy"
-                />
+                <img src="./img/projects/frontendmentor.jpg" alt="" loading="lazy" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section
-        id="contact"
-        class="section--left section--small-gap wrapper-12 scroll-margin"
-        aria-label="How to contact with me"
-        data-spy="section"
-      >
-        <h2 class="section__title">
-          <span>&lt;</span>Contact me<span>&#47;&gt;</span>
-        </h2>
-        <p class="section__text">
-          I am currently open to full-time, contract or part-time opportunities
-          in Front End Development.
-        </p>
+      <section id="contact" class="section--left section--small-gap wrapper-12 scroll-margin" aria-label="How to contact with me" data-spy="section">
+        <h2 class="section__title"><span>&lt;</span>Contact me<span>&#47;&gt;</span></h2>
+        <p class="section__text">I am currently open to full-time, contract or part-time opportunities in Front End Development.</p>
         <div class="section__content">
           <div class="contactme">
             <div class="contactme__aside">
@@ -480,27 +361,17 @@
               </h3>
               <ul class="contactme__links">
                 <li>
-                  <a
-                    class="contactme__link"
-                    href="mailto:patryk.nowak.dev@gmail.com"
-                  >
+                  <a class="contactme__link" href="mailto:patryk.nowak.dev@gmail.com">
                     <svg class="icon">
-                      <use
-                        xlink:href="./img/icons/sprite.svg#icon-envelope"
-                      ></use>
+                      <use xlink:href="./img/icons/sprite.svg#icon-envelope"></use>
                     </svg>
                     patryk.nowak.dev@gmail.com
                   </a>
                 </li>
                 <li>
-                  <a
-                    class="contactme__link"
-                    href="https://www.linkedin.com/in/patryk-ernest-nowak/"
-                  >
+                  <a class="contactme__link" href="https://www.linkedin.com/in/patryk-ernest-nowak/">
                     <svg class="icon">
-                      <use
-                        xlink:href="./img/icons/sprite.svg#icon-linkedin"
-                      ></use>
+                      <use xlink:href="./img/icons/sprite.svg#icon-linkedin"></use>
                     </svg>
                     in/patryk-ernest-nowak
                   </a>
@@ -508,25 +379,16 @@
                 <li>
                   <a
                     class="contactme__link"
-                    href="https://www.google.pl/maps/place/Lublin/@51.2180801,22.4813711,12z/data=!3m1!4b1!4m6!3m5!1s0x472257141e154061:0x5528ee7af6e8e95f!8m2!3d51.2464536!4d22.5684463!16zL20vMGp3XzU?entry=ttu"
-                  >
+                    href="https://www.google.pl/maps/place/Lublin/@51.2180801,22.4813711,12z/data=!3m1!4b1!4m6!3m5!1s0x472257141e154061:0x5528ee7af6e8e95f!8m2!3d51.2464536!4d22.5684463!16zL20vMGp3XzU?entry=ttu">
                     <svg class="icon">
-                      <use
-                        xlink:href="./img/icons/sprite.svg#icon-location"
-                      ></use>
+                      <use xlink:href="./img/icons/sprite.svg#icon-location"></use>
                     </svg>
                     Lublin, Poland
                   </a>
                 </li>
               </ul>
             </div>
-            <form
-              action="#"
-              class="contactme__form form"
-              data-js="contact-form"
-              name="contact"
-              netlify
-            >
+            <form action="#" class="contactme__form form" data-js="contact-form" name="contact" netlify>
               <div class="form__row">
                 <label for="fullname" class="form__label">Full name</label>
                 <input
@@ -538,8 +400,7 @@
                   pattern="^[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){0,}$"
                   required
                   class="form__input"
-                  data-js="contact-form__input"
-                />
+                  data-js="contact-form__input" />
               </div>
               <div class="form__row">
                 <label for="email" class="form__label">email address</label>
@@ -551,8 +412,7 @@
                   pattern="^[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
                   required
                   class="form__input"
-                  data-js="contact-form__input"
-                />
+                  data-js="contact-form__input" />
               </div>
               <div class="form__row">
                 <label for="message" class="form__label">message</label>
@@ -565,14 +425,9 @@
                   required
                   minlength="10"
                   class="form__input"
-                  data-js="contact-form__input"
-                ></textarea>
+                  data-js="contact-form__input"></textarea>
               </div>
-              <button
-                type="submit"
-                class="form__btn-submit btn--primary"
-                data-js="contact-form__submit-btn"
-              >
+              <button type="submit" class="form__btn-submit btn--primary" data-js="contact-form__submit-btn">
                 Send message
                 <svg class="icon">
                   <use xlink:href="./img/icons/sprite.svg#icon-envelope"></use>
@@ -585,9 +440,7 @@
     </main>
 
     <footer class="footer">
-      <a href="#" class="footer__logo logo" aria-label="Back Home"
-        >Pendev<span>.</span>
-      </a>
+      <a href="#" class="footer__logo logo" aria-label="Back Home">Pendev<span>.</span> </a>
       <div class="footer__links">
         <a class="footer__link" href="mailto:patryk.nowak.dev@gmail.com"
           ><span>Mail</span>
@@ -595,10 +448,7 @@
             <use xlink:href="./img/icons/sprite.svg#icon-mail"></use>
           </svg>
         </a>
-        <a
-          class="footer__link"
-          href="https://www.linkedin.com/in/patryk-ernest-nowak/"
-        >
+        <a class="footer__link" href="https://www.linkedin.com/in/patryk-ernest-nowak/">
           <span>Linkedin</span>
           <svg class="icon">
             <use xlink:href="./img/icons/sprite.svg#icon-linkedin"></use>
@@ -612,10 +462,7 @@
         </a>
       </div>
       <!-- <p class="footer__text">Created &amp; Designed with passion.</p> -->
-      <p class="footer__rigths">
-        &copy; <span data-js="footer-year">2023</span> All rights reserved for
-        Patryk Nowak.
-      </p>
+      <p class="footer__rigths">&copy; <span data-js="footer-year">2023</span> All rights reserved for Patryk Nowak.</p>
     </footer>
     <script>
       window.dataLayer = window.dataLayer || [];
