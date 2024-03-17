@@ -3,5 +3,9 @@
   "namers": [
     "parcel-namer-custom",
     "..."
+  ],
+  "reporters": [
+    "...",
+    "parcel-reporter-static-files-copy"
   ]
 }
