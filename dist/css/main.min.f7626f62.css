@@ -1198,7 +1198,7 @@ main:before {
     transform: scale(.95);
   }
 
-  .project__img-box:hover img {
+  .project__img-box:hover > picture, .project__img-box:hover > img {
     filter: grayscale(0);
   }
 

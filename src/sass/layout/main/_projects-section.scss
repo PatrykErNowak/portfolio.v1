@@ -165,7 +165,8 @@ $project-desc-color: c.$font-color-darker;
         &::before {
           transform: scale(0.95);
         }
-        img {
+        > picture,
+        > img {
           filter: grayscale(0);
         }
       }
