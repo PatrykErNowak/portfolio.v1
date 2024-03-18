@@ -98,8 +98,9 @@
       <section class="section wrapper-12" aria-label="My motto">
         <p class="motto">
           <svg class="icon" aria-hidden="true" data-js="my-motto__quote">
-            <use xlink:href="./img/icons/sprite.svg#icon-quotes-left"></use></svg
-          >&nbsp;<span data-type-text="false" data-js="my-motto">Nothing is impossible, it all depends on how much time you have to spend on it</span>&nbsp;<svg
+            <use xlink:href="./img/icons/sprite.svg#icon-quotes-left"></use>
+          </svg>
+          <span data-type-text="false" data-js="my-motto">Nothing is impossible, it all depends on how much time you have to spend on it</span>&nbsp;<svg
             class="icon"
             aria-hidden="true"
             data-js="my-motto__quote">
@@ -263,7 +264,11 @@
                 </div>
               </div>
               <div class="project__img-box" data-js="img3D">
-                <img src="./img/projects/tenvape.jpg" alt="" loading="lazy" />
+                <picture>
+                  <source srcset="./img/projects/tenvape.avif" type="image/avif" />
+                  <source srcset="./img/projects/tenvape.webp" type="image/webp" />
+                  <img src="./img/projects/tenvape.jpg" alt="" loading="lazy" />
+                </picture>
               </div>
             </div>
 
@@ -302,7 +307,11 @@
                 </div>
               </div>
               <div class="project__img-box" data-js="img3D">
-                <img src="./img//projects/mdata.jpg" alt="" loading="lazy" />
+                <picture>
+                  <source srcset="./img/projects/mdata.avif" type="image/avif" />
+                  <source srcset="./img/projects/mdata.webp" type="image/webp" />
+                  <img src="./img/projects/mdata.jpg" alt="" loading="lazy" />
+                </picture>
               </div>
             </div>
             <div class="project">
@@ -340,7 +349,11 @@
                 </div>
               </div>
               <div class="project__img-box" data-js="img3D">
-                <img src="./img/projects/frontendmentor.jpg" alt="" loading="lazy" />
+                <picture>
+                  <source srcset="./img/projects/frontendmentor.avif" type="image/avif" />
+                  <source srcset="./img/projects/frontendmentor.webp" type="image/webp" />
+                  <img src="./img/projects/frontendmentor.jpg" alt="" loading="lazy" />
+                </picture>
               </div>
             </div>
           </div>
