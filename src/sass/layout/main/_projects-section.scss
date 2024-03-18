@@ -149,7 +149,9 @@ $project-desc-color: c.$font-color-darker;
         transition: transform v.$transition-duration v.$transition-function;
       }
 
-      img {
+      > picture,
+      > img {
+        margin-top: 1.5em;
         min-height: 95%;
         max-height: 95%;
         min-width: 95%;

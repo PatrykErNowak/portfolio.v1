@@ -1183,12 +1183,13 @@ main:before {
     top: 2%;
   }
 
-  .project__img-box img {
+  .project__img-box > picture, .project__img-box > img {
     filter: grayscale(100);
     min-width: 95%;
     max-width: 95%;
     min-height: 95%;
     max-height: 95%;
+    margin-top: 1.5em;
     transition: filter .3s ease-in-out;
     box-shadow: 0 0 5px #ffffff1a;
   }
