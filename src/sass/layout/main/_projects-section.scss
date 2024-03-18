@@ -128,7 +128,7 @@ $project-desc-color: c.$font-color-darker;
     display: flex;
     justify-content: start;
     align-items: end;
-    aspect-ratio: 16/8.1;
+    // aspect-ratio: 16/8.1;
     overflow: hidden;
 
     img {
@@ -184,8 +184,7 @@ $project-desc-color: c.$font-color-darker;
       .project__img-box {
         margin-left: 2.5rem;
         // For 3D Effect
-        transform: perspective(var(--perspective)) rotateX(var(--rotateX))
-          rotateY(var(--rotateY)) scale3d(var(--scale), var(--scale), 1);
+        transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(var(--rotateY)) scale3d(var(--scale), var(--scale), 1);
 
         // only for static
         order: -1;
@@ -200,9 +199,7 @@ $project-desc-color: c.$font-color-darker;
       .project__img-box {
         margin-right: 2.5rem;
         // For 3D Effect
-        transform: perspective(var(--perspective)) rotateX(var(--rotateX))
-          rotateY(calc(var(--rotateY) * -1))
-          scale3d(var(--scale), var(--scale), 1);
+        transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(calc(var(--rotateY) * -1)) scale3d(var(--scale), var(--scale), 1);
 
         // only for static
         order: 1;

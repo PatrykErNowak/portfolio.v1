@@ -1158,7 +1158,6 @@ main:before {
 }
 
 .project__img-box {
-  aspect-ratio: 16 / 8.1;
   justify-content: start;
   align-items: end;
   display: flex;
