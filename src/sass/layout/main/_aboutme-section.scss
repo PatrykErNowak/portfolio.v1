@@ -50,6 +50,12 @@ $desc-color: c.$font-color-darker;
     flex-direction: row;
     gap: clamp(8rem, 8vw, 15rem);
   }
+  &__btn-resume {
+    @media screen and (min-width: b.$medium) {
+      display: none;
+    }
+  }
+
   &__info-box {
     display: flex;
     flex-direction: column;

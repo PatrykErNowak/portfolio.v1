@@ -634,10 +634,10 @@ li:has(.nav__btn-resume) {
 
 @media screen and (width >= 48em) {
   .header .myphoto {
-    height: unset;
     aspect-ratio: 1.8;
     opacity: .1;
     background-image: url("../img/my photo.4688eb2d.jpeg");
+    height: 100%;
     transition: opacity .15s linear;
     top: 60%;
     left: 50%;
@@ -884,6 +884,10 @@ main:before {
   .about {
     flex-direction: row;
     gap: clamp(8rem, 8vw, 15rem);
+  }
+
+  .about__btn-resume {
+    display: none;
   }
 }
 
